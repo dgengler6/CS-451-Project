@@ -58,6 +58,10 @@ public class Main {
 
         System.out.println("Broadcasting and delivering messages...\n");
 
+        for(int msg = 1; msg <=10; msg++){
+            OutputWriter.writeToFile("b " + msg, parser.output());
+        }
+
         // After a process finishes broadcasting,
         // it waits forever for the delivery of messages.
         while (true) {
