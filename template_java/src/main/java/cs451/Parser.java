@@ -70,4 +70,8 @@ public class Parser {
         return configParser.getPath();
     }
 
+    public int nbMessages() { return configParser.getNbMessages(); }
+
+    public int perfectLinkHostId() { return configParser.getPerfectLinkHostId(); }
+
 }

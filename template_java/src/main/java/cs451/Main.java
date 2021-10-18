@@ -56,11 +56,20 @@ public class Main {
 
         System.out.println("Doing some initialization\n");
 
+        int myID = parser.myId();
+
+        List<Host> hosts = parser.hosts();
+
+        System.out.println(parser.nbMessages());
         System.out.println("Broadcasting and delivering messages...\n");
 
+
+        // The idea here would be to create a thread for each msg and send it repeat to all hosts.
         for(int msg = 1; msg <=10; msg++){
             OutputWriter.writeToFile("b " + msg, parser.output());
         }
+
+
 
         // After a process finishes broadcasting,
         // it waits forever for the delivery of messages.
