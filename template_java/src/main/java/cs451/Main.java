@@ -68,7 +68,7 @@ public class Main {
 
         // Connect to the given host
         Host destHost = hosts.get(perfectLinkHostId - 1);
-
+        System.out.println(destHost.getIp()+ " "+  destHost.getPort());
         Coordinator coordinator = new Coordinator((int)pid, "", 0, destHost.getIp(), destHost.getPort());
 
         System.out.println("Broadcasting and delivering messages...\n");
