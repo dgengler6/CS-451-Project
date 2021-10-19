@@ -1,5 +1,9 @@
 package cs451;
 
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.io.File;
 
 public class ConfigParser {
@@ -17,7 +21,7 @@ public class ConfigParser {
         File file = new File(value);
         path = file.getPath();
 
-        try(BufferedReader br = new BufferedReader(new FileReader(filename))) {
+        try(BufferedReader br = new BufferedReader(new FileReader(path))) {
             int lineNum = 1;
             String firstLine = br.readLine();
 
