@@ -66,6 +66,7 @@ public class Coordinator {
             bb.putLong((long) pid);
 
             writer.write(bb.array(), 0, 8);
+            System.out.println("Connected");
         } catch (IOException ex) {
             System.out.println("I/O error: " + ex.getMessage());
         }
