@@ -61,7 +61,10 @@ public class Main {
 
         List<Host> hosts = parser.hosts();
 
-        System.out.println(parser.nbMessages());
+        int nbMessages = parser.nbMessages();
+
+        int perfectLinkHostId = parser.perfectLinkHostId();
+        System.out.println(String.format("m = %d , i = %d", nbMessages, perfectLinkHostId));
         System.out.println("Broadcasting and delivering messages...\n");
 
 
