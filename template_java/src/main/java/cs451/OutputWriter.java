@@ -18,4 +18,14 @@ public class OutputWriter {
         }
     }
 
+    // Write to output the broadcasting of a message
+    public static void writeBroadcast(int seqNb, String path){
+        writeToFile(String.format("b %d", seqNb), path);
+    }
+
+    // Write to output the delivering of a message
+    public static void writeDeliver(int sender, int seqNb, String path){
+        writeToFile(String.format("d %d %d", sender, seqNb), path);
+    }
+
 }

@@ -60,17 +60,26 @@ public class Main {
         int myID = parser.myId();
 
         List<Host> hosts = parser.hosts();
-
+        Host me = hosts.get(myID - 1);
         int nbMessages = parser.nbMessages();
 
         int perfectLinkHostId = parser.perfectLinkHostId();
         System.out.println(String.format("m = %d , i = %d", nbMessages, perfectLinkHostId));
-
-        // Connect to the given host
         Host destHost = hosts.get(perfectLinkHostId - 1);
-        System.out.println(destHost.getIp()+ " "+  destHost.getPort());
-        Coordinator coordinator = new Coordinator((int)pid, "", 0, destHost.getIp(), destHost.getPort());
 
+        if( perfectLinkHostId == myID){
+            System.out.println("Recieving messages");
+           MessageListener ml = new MessageListener(me.getPort(), 0);
+
+           ml.run();
+        }else{
+            System.out.println("Sending messages to "+ perfectLinkHostId);
+            FairLossLinks fll = new FairLossLinks(parser.output());
+            for(int i=0; i<nbMessages;i++){
+                Message m = new Message(i, myID, perfectLinkHostId, destHost.getIp(), destHost.getPort(), "");
+                fll.fairLossSend(m);
+            }
+        }
         System.out.println("Broadcasting and delivering messages...\n");
 
 
