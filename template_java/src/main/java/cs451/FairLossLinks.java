@@ -20,7 +20,6 @@ public class FairLossLinks implements Links{
 
     public void send(Message message){
         byte[] buf;
-        OutputWriter.writeBroadcast(message, outputPath);
         try {
             socket = new DatagramSocket();
 

@@ -55,4 +55,16 @@ public class Message implements Serializable {
         System.out.println(String.format("msg %d from %d to %d. port %d. Content : %s.", seqNbr, senderId, destId, destPort, content));
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == this )
+            return true;
+
+        if (!(obj instanceof Message))
+            return false;
+
+        return this.seqNbr == ((Message) obj).seqNbr && this.senderId == ((Message) obj).senderId &&
+                this.senderIp.equals(((Message) obj).senderIp) && this.destId == ((Message) obj).destId &&
+                this.destIp.equals(((Message) obj).destIp) && this.destPort == ((Message) obj).destPort && this.content.equals(((Message) obj).content);
+    }
 }
