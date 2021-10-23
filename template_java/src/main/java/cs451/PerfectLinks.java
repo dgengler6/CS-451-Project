@@ -16,7 +16,7 @@ public class PerfectLinks implements Links {
     }
 
     public void send(Message message){
-        OutputWriter.writeBroadcast(message, outputPath);
+        OutputWriter.writeBroadcast(message, outputPath, true);
         stb.send(message);
     }
 

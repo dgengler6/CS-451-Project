@@ -20,12 +20,26 @@ public class OutputWriter {
 
     // Write to output the broadcasting of a message
     public static void writeBroadcast(Message message, String path){
-        writeToFile(String.format("b %d", message.getSeqNbr()), path);
+        writeBroadcast(message, path, false);
+    }
+
+    public static void writeBroadcast(Message message, String path, Boolean print){
+        String output = String.format("b %d", message.getSeqNbr());
+        if (print)
+            System.out.println(output);
+        writeToFile(output, path);
     }
 
     // Write to output the delivering of a message
     public static void writeDeliver(Message message, String path){
-        writeToFile(String.format("d %d %d", message.getSenderId(), message.getSeqNbr()), path);
+        writeDeliver(message, path, false);
+    }
+
+    public static void writeDeliver(Message message, String path, Boolean print){
+        String output = String.format("d %d %d", message.getSenderId(), message.getSeqNbr());
+        if (print)
+            System.out.println(output);
+        writeToFile(output, path);
     }
 
 }

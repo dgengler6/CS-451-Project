@@ -44,7 +44,7 @@ public class MessageListener implements Runnable {
                 try {
                     Message message = (Message) iStream.readObject();
                     link.deliver(message);
-                    message.printMessage();
+                    //message.printMessage();
                 }catch(ClassNotFoundException e){
                     System.out.println("Error while deserializing "+e);
                 }
