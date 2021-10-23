@@ -88,8 +88,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/../template_java/src/main/java/cs451/MessageListener.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="720">
-              <caret line="48" column="114" selection-start-line="48" selection-start-column="114" selection-end-line="48" selection-end-column="114" />
+            <state relative-caret-position="675">
+              <caret line="45" column="107" selection-start-line="45" selection-start-column="107" selection-end-line="45" selection-end-column="107" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -224,7 +224,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1634991099467" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1634991235471" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RunDashboard">
@@ -445,8 +445,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/../template_java/src/main/java/cs451/MessageListener.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="720">
-          <caret line="48" column="114" selection-start-line="48" selection-start-column="114" selection-end-line="48" selection-end-column="114" />
+        <state relative-caret-position="675">
+          <caret line="45" column="107" selection-start-line="45" selection-start-column="107" selection-end-line="45" selection-end-column="107" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

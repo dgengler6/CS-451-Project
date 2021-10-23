@@ -43,7 +43,7 @@ public class MessageListener {
                 String received
                         = new String(packet.getData(), 0, packet.getLength());
 
-                ObjectInputStream iStream = new ObjectInputStream(new ByteArrayInputStream(received.getBytes()));
+                ObjectInputStream iStream = new ObjectInputStream(new ByteArrayInputStream(packet.getData()));
                 try {
                     Message message = (Message) iStream.readObject();
                     System.out.println(message.getSeqNbr()+ " "+ message.getSenderId() + " " + message.getDestId());
