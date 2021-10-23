@@ -40,6 +40,8 @@ public class FairLossLinks implements Links{
     }
 
     public void deliver(Message message){
+        System.out.println("Delivering");
+        message.printMessage();
         OutputWriter.writeDeliver(message, outputPath);
     }
 }

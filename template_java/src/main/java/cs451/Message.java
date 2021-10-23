@@ -52,6 +52,7 @@ public class Message implements Serializable {
     }
 
     public void printMessage(){
-        System.out.println(String.format("Message %d from sender %d (IP %s) to dest %d (IP %s) on port %d. Content : %s", seqNbr, senderId, senderIp, destId, destIp, destPort, content));
+        System.out.println(String.format("msg %d from %d to %d. port %d. Content : %s.", seqNbr, senderId, destId, destPort, content));
     }
+
 }

@@ -6,14 +6,12 @@ import java.util.ArrayList;
 
 public class StubbornLinks implements Links{
 
-    private String outputPath;
     private FairLossLinks fll;
     private ArrayList<Message> sent;
-    private int delay = 5000;
+    private int delay = 10000;
 
-    public StubbornLinks(String outputPath, int delay){
+    public StubbornLinks(String outputPath){
         this.fll = new FairLossLinks(outputPath);
-        this.outputPath = outputPath;
         this.sent = new ArrayList<>();
         this.delay = delay;
 
@@ -50,4 +48,6 @@ public class StubbornLinks implements Links{
     public void deliver(Message message){
         fll.deliver(message);
     }
+
+    // We might want to remove the messages at some point as well.
 }

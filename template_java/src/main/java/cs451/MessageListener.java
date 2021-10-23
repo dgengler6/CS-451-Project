@@ -40,8 +40,6 @@ public class MessageListener implements Runnable {
                 int port = packet.getPort();
                 packet = new DatagramPacket(buf, buf.length, address, port);
 
-                System.out.println(packet);
-
                 ObjectInputStream iStream = new ObjectInputStream(new ByteArrayInputStream(packet.getData()));
                 try {
                     Message message = (Message) iStream.readObject();

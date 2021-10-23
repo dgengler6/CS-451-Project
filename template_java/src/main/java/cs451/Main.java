@@ -69,15 +69,16 @@ public class Main {
 
         if( perfectLinkHostId == myID){
             System.out.println("Recieving messages");
-           MessageListener ml = new MessageListener(me.getPort(), 0, new FairLossLinks(parser.output()));
+           MessageListener ml = new MessageListener(me.getPort(), 0, new PerfectLinks(parser.output()));
            new Thread(ml).start();
         }else{
             System.out.println("Sending messages to "+ perfectLinkHostId);
             //FairLossLinks fll = new FairLossLinks(parser.output());
-            StubbornLinks stl = new StubbornLinks(parser.output(), 5000);
+            //StubbornLinks stb = new StubbornLinks(parser.output());
+            PerfectLinks pl = new PerfectLinks(parser.output());
             for(int i=0; i<nbMessages;i++){
                 Message m = new Message(i, myID, me.getIp(), perfectLinkHostId, destHost.getIp(), destHost.getPort(), "");
-                stl.send(m);
+                pl.send(m);
             }
         }
         System.out.println("Broadcasting and delivering messages...\n");
