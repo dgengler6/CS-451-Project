@@ -2,13 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f055dc9e-a362-4732-9dd1-5022778a9303" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../template_java/src/main/java/cs451/Links.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../template_java/src/main/java/cs451/FairLossLinks.java" beforeDir="false" afterPath="$PROJECT_DIR$/../template_java/src/main/java/cs451/FairLossLinks.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../template_java/src/main/java/cs451/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../template_java/src/main/java/cs451/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../template_java/src/main/java/cs451/Message.java" beforeDir="false" afterPath="$PROJECT_DIR$/../template_java/src/main/java/cs451/Message.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../template_java/src/main/java/cs451/MessageListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/../template_java/src/main/java/cs451/MessageListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../template_java/src/main/java/cs451/OutputWriter.java" beforeDir="false" afterPath="$PROJECT_DIR$/../template_java/src/main/java/cs451/OutputWriter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../template_java/src/main/java/cs451/PerfectLinks.java" beforeDir="false" afterPath="$PROJECT_DIR$/../template_java/src/main/java/cs451/PerfectLinks.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../template_java/src/main/java/cs451/StubbornLinks.java" beforeDir="false" afterPath="$PROJECT_DIR$/../template_java/src/main/java/cs451/StubbornLinks.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/../template_java/target/" />
@@ -20,11 +17,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../template_java/src/main/java/cs451/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="483">
-              <caret line="71" column="105" selection-start-line="71" selection-start-column="105" selection-end-line="71" selection-end-column="105" />
+            <state relative-caret-position="637">
+              <caret line="76" column="73" selection-start-line="76" selection-start-column="73" selection-end-line="76" selection-end-column="73" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -35,8 +32,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../template_java/src/main/java/cs451/FairLossLinks.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
-              <caret line="22" column="43" selection-start-line="22" selection-start-column="43" selection-end-line="22" selection-end-column="43" />
+            <state relative-caret-position="150">
+              <caret line="10" column="43" selection-start-line="10" selection-start-column="43" selection-end-line="10" selection-end-column="43" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#278#279#0" expanded="true" />
@@ -51,13 +48,15 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../template_java/src/main/java/cs451/Message.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="75">
-              <caret line="5" column="52" selection-start-line="5" selection-start-column="52" selection-end-line="5" selection-end-column="52" />
+            <state relative-caret-position="810">
+              <caret line="54" column="149" selection-start-line="54" selection-start-column="149" selection-end-line="54" selection-end-column="149" />
               <folding>
                 <element signature="e#390#391#0" expanded="true" />
                 <element signature="e#419#420#0" expanded="true" />
                 <element signature="e#585#586#0" expanded="true" />
                 <element signature="e#616#617#0" expanded="true" />
+                <element signature="e#837#838#0" expanded="true" />
+                <element signature="e#868#869#0" expanded="true" />
                 <element signature="e#646#647#0" expanded="true" />
                 <element signature="e#675#676#0" expanded="true" />
                 <element signature="e#708#709#0" expanded="true" />
@@ -71,16 +70,26 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/../template_java/src/main/java/cs451/StubbornLinks.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="16" column="19" selection-start-line="16" selection-start-column="19" selection-end-line="16" selection-end-column="19" />
+            <state relative-caret-position="465">
+              <caret line="31" column="13" lean-forward="true" selection-start-line="31" selection-start-column="13" selection-end-line="31" selection-end-column="13" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#939#940#0" expanded="true" />
-                <element signature="e#967#968#0" expanded="true" />
+                <element signature="e#499#785#0" expanded="true" />
+                <element signature="e#1149#1150#0" expanded="true" />
+                <element signature="e#1185#1186#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_101.jdk/Contents/Home/src.zip!/java/lang/Thread.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="328">
+              <caret line="742" column="16" selection-start-line="742" selection-start-column="16" selection-end-line="742" selection-end-column="16" />
             </state>
           </provider>
         </entry>
@@ -97,8 +106,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../template_java/src/main/java/cs451/MessageListener.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="705">
-              <caret line="47" column="69" selection-start-line="47" selection-start-column="69" selection-end-line="47" selection-end-column="69" />
+            <state relative-caret-position="150">
+              <caret line="10" column="48" selection-start-line="10" selection-start-column="48" selection-end-line="10" selection-end-column="48" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -111,15 +120,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="75">
               <caret line="5" column="32" selection-start-line="5" selection-start-column="32" selection-end-line="5" selection-end-column="32" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../template_java/src/main/java/cs451/Constants.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="30">
-              <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
             </state>
           </provider>
         </entry>
@@ -166,14 +166,14 @@
         <option value="$PROJECT_DIR$/../template_java/src/main/java/cs451/ConfigParser.java" />
         <option value="$PROJECT_DIR$/../template_java/src/main/java/cs451/Coordinator.java" />
         <option value="$PROJECT_DIR$/../template_java/src/main/java/cs451/PErfect.java" />
-        <option value="$PROJECT_DIR$/../template_java/src/main/java/cs451/Message.java" />
         <option value="$PROJECT_DIR$/../template_java/src/main/java/cs451/Links.java" />
-        <option value="$PROJECT_DIR$/../template_java/src/main/java/cs451/StubbornLinks.java" />
         <option value="$PROJECT_DIR$/../template_java/src/main/java/cs451/PerfectLinks.java" />
-        <option value="$PROJECT_DIR$/../template_java/src/main/java/cs451/MessageListener.java" />
         <option value="$PROJECT_DIR$/../template_java/src/main/java/cs451/OutputWriter.java" />
+        <option value="$PROJECT_DIR$/../template_java/src/main/java/cs451/Message.java" />
+        <option value="$PROJECT_DIR$/../template_java/src/main/java/cs451/MessageListener.java" />
         <option value="$PROJECT_DIR$/../template_java/src/main/java/cs451/FairLossLinks.java" />
         <option value="$PROJECT_DIR$/../template_java/src/main/java/cs451/Main.java" />
+        <option value="$PROJECT_DIR$/../template_java/src/main/java/cs451/StubbornLinks.java" />
       </list>
     </option>
   </component>
@@ -231,7 +231,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1634993115740" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1634996891513" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RunDashboard">
@@ -377,37 +377,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../template_java/src/main/java/cs451/Message.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" column="52" selection-start-line="5" selection-start-column="52" selection-end-line="5" selection-end-column="52" />
-          <folding>
-            <element signature="e#390#391#0" expanded="true" />
-            <element signature="e#419#420#0" expanded="true" />
-            <element signature="e#585#586#0" expanded="true" />
-            <element signature="e#616#617#0" expanded="true" />
-            <element signature="e#646#647#0" expanded="true" />
-            <element signature="e#675#676#0" expanded="true" />
-            <element signature="e#708#709#0" expanded="true" />
-            <element signature="e#737#738#0" expanded="true" />
-            <element signature="e#769#770#0" expanded="true" />
-            <element signature="e#800#801#0" expanded="true" />
-            <element signature="e#581#582#0" expanded="true" />
-            <element signature="e#611#612#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../template_java/src/main/java/cs451/MessageListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="705">
-          <caret line="47" column="69" selection-start-line="47" selection-start-column="69" selection-end-line="47" selection-end-column="69" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../template_java/src/main/java/cs451/Links.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
@@ -422,18 +391,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../template_java/src/main/java/cs451/StubbornLinks.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" column="19" selection-start-line="16" selection-start-column="19" selection-end-line="16" selection-end-column="19" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#939#940#0" expanded="true" />
-            <element signature="e#967#968#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../template_java/src/main/java/cs451/OutputWriter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="375">
@@ -441,10 +398,50 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/../template_java/src/main/java/cs451/Message.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="810">
+          <caret line="54" column="149" selection-start-line="54" selection-start-column="149" selection-end-line="54" selection-end-column="149" />
+          <folding>
+            <element signature="e#390#391#0" expanded="true" />
+            <element signature="e#419#420#0" expanded="true" />
+            <element signature="e#585#586#0" expanded="true" />
+            <element signature="e#616#617#0" expanded="true" />
+            <element signature="e#837#838#0" expanded="true" />
+            <element signature="e#868#869#0" expanded="true" />
+            <element signature="e#646#647#0" expanded="true" />
+            <element signature="e#675#676#0" expanded="true" />
+            <element signature="e#708#709#0" expanded="true" />
+            <element signature="e#737#738#0" expanded="true" />
+            <element signature="e#769#770#0" expanded="true" />
+            <element signature="e#800#801#0" expanded="true" />
+            <element signature="e#581#582#0" expanded="true" />
+            <element signature="e#611#612#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_101.jdk/Contents/Home/src.zip!/java/lang/Thread.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="328">
+          <caret line="742" column="16" selection-start-line="742" selection-start-column="16" selection-end-line="742" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../template_java/src/main/java/cs451/MessageListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="48" selection-start-line="10" selection-start-column="48" selection-end-line="10" selection-end-column="48" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/../template_java/src/main/java/cs451/FairLossLinks.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="22" column="43" selection-start-line="22" selection-start-column="43" selection-end-line="22" selection-end-column="43" />
+        <state relative-caret-position="150">
+          <caret line="10" column="43" selection-start-line="10" selection-start-column="43" selection-end-line="10" selection-end-column="43" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#278#279#0" expanded="true" />
@@ -457,10 +454,23 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/../template_java/src/main/java/cs451/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="483">
-          <caret line="71" column="105" selection-start-line="71" selection-start-column="105" selection-end-line="71" selection-end-column="105" />
+        <state relative-caret-position="637">
+          <caret line="76" column="73" selection-start-line="76" selection-start-column="73" selection-end-line="76" selection-end-column="73" />
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../template_java/src/main/java/cs451/StubbornLinks.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="465">
+          <caret line="31" column="13" lean-forward="true" selection-start-line="31" selection-start-column="13" selection-end-line="31" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#499#785#0" expanded="true" />
+            <element signature="e#1149#1150#0" expanded="true" />
+            <element signature="e#1185#1186#0" expanded="true" />
           </folding>
         </state>
       </provider>

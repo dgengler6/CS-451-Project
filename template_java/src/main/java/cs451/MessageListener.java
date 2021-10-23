@@ -8,7 +8,7 @@ import java.net.DatagramSocket;
 import java.net.InetAddress;
 import java.net.SocketException;
 
-public class MessageListener {
+public class MessageListener implements Runnable {
 
     private DatagramSocket socket;
     private boolean running;
@@ -17,7 +17,7 @@ public class MessageListener {
     private Links link;
 
     /*
-        UDP listener on port "port" for "duration" milliseconds
+        UDP listener on port "port" for "duration" milliseconds, using "link" for connection
      */
     public MessageListener(int port, int duration, Links link) {
         try {
@@ -33,8 +33,7 @@ public class MessageListener {
         running = true;
 
         while (running) {
-            DatagramPacket packet
-                    = new DatagramPacket(buf, buf.length);
+            DatagramPacket packet = new DatagramPacket(buf, buf.length);
             try {
                 socket.receive(packet);
                 InetAddress address = packet.getAddress();
@@ -47,6 +46,7 @@ public class MessageListener {
                 try {
                     Message message = (Message) iStream.readObject();
                     link.deliver(message);
+                    message.printMessage();
                 }catch(ClassNotFoundException e){
                     System.out.println("Error while deserializing "+e);
                 }
