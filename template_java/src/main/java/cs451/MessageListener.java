@@ -1,6 +1,8 @@
 package cs451;
 
+import java.io.ByteArrayInputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
@@ -41,7 +43,14 @@ public class MessageListener {
                 String received
                         = new String(packet.getData(), 0, packet.getLength());
 
-                System.out.println(received+ " "+ address + " " + port);
+                ObjectInputStream iStream = new ObjectInputStream(new ByteArrayInputStream(received.getBytes()));
+                try {
+                    Message message = (Message) iStream.readObject();
+                    System.out.println(message.getSeqNbr()+ " "+ message.getSenderId() + " " + message.getDestId());
+                }catch(ClassNotFoundException e){
+                    System.out.println("Error while deserializing "+e);
+                }
+                iStream.close();
             }catch(IOException e){
                 System.out.println("I/O Error " + e);
             }
