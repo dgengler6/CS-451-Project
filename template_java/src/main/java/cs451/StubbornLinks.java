@@ -29,7 +29,7 @@ public class StubbornLinks {
         }
     }
 
-    public void stubbornDeliver(int message, int src){
-        fll.fairLossDeliver(message, src);
+    public void stubbornDeliver(Message message){
+        fll.fairLossDeliver(message);
     }
 }
