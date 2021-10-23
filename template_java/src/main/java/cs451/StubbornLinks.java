@@ -3,7 +3,7 @@ package cs451;
 import java.io.IOException;
 import java.net.*;
 
-public class StubbornLinks {
+public class StubbornLinks implements Links{
 
     private String outputPath;
     private FairLossLinks fll;
@@ -13,23 +13,14 @@ public class StubbornLinks {
         this.outputPath = outputPath;
     }
 
-    public void stubbornSend(int message, String ip, int port, int duratiion){
+    public void send(Message message){
         byte[] buf;
-        OutputWriter.writeBroadcast(message, outputPath);
         while(true) {
-            try {
-                DatagramSocket socket = new DatagramSocket();
-                buf = (""+message).getBytes();
-                DatagramPacket packet = new DatagramPacket(buf, 0, buf.length, InetAddress.getByName(ip), port);
-                //= new DatagramPacket(buf, buf.length, ip, port);
-                socket.send(packet);
-            } catch (IOException e) {
-                System.out.println("Error in stubbornSend " + e);
-            }
+
         }
     }
 
-    public void stubbornDeliver(Message message){
-        fll.fairLossDeliver(message);
+    public void deliver(Message message){
+        fll.deliver(message);
     }
 }

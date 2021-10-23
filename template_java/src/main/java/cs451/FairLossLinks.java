@@ -8,7 +8,7 @@ import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
 
-public class FairLossLinks {
+public class FairLossLinks implements Links{
 
     private String outputPath;
     private DatagramSocket socket;
@@ -18,11 +18,12 @@ public class FairLossLinks {
         this.outputPath = outputPath;
     }
 
-    public void fairLossSend(Message message){
+    public void send(Message message){
         byte[] buf;
-        //OutputWriter.writeBroadcast(message, outputPath);
+        OutputWriter.writeBroadcast(message, outputPath);
         try {
             socket = new DatagramSocket();
+
             // Serialize our Message to send it over network
             ByteArrayOutputStream bStream = new ByteArrayOutputStream();
             ObjectOutput oo = new ObjectOutputStream(bStream);
@@ -31,7 +32,6 @@ public class FairLossLinks {
 
             buf = bStream.toByteArray();
             packet = new DatagramPacket(buf, 0, buf.length, InetAddress.getByName(message.getDestIp()), message.getDestPort());
-            //= new DatagramPacket(buf, buf.length, ip, port);
             socket.send(packet);
         } catch (IOException e) {
             System.out.println("Error in fairLossSend " + e);
@@ -39,7 +39,7 @@ public class FairLossLinks {
 
     }
 
-    public void fairLossDeliver(Message message){
-        OutputWriter.writeDeliver(message.getSenderId(), message.getSeqNbr(), outputPath);
+    public void deliver(Message message){
+        OutputWriter.writeDeliver(message, outputPath);
     }
 }

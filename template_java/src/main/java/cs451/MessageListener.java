@@ -14,13 +14,15 @@ public class MessageListener {
     private boolean running;
     private byte[] buf = new byte[256];
     private int duration = 10000;
+    private Links link;
 
     /*
         UDP listener on port "port" for "duration" milliseconds
      */
-    public MessageListener(int port, int duration) {
+    public MessageListener(int port, int duration, Links link) {
         try {
             this.duration = duration;
+            this.link = link;
             socket = new DatagramSocket(port);
         } catch( SocketException e){
             System.out.println("Socket Error " + e);
@@ -40,16 +42,16 @@ public class MessageListener {
                 packet = new DatagramPacket(buf, buf.length, address, port);
 
                 System.out.println(packet);
-                String received
-                        = new String(packet.getData(), 0, packet.getLength());
 
                 ObjectInputStream iStream = new ObjectInputStream(new ByteArrayInputStream(packet.getData()));
                 try {
                     Message message = (Message) iStream.readObject();
-                    System.out.println(message.getSeqNbr()+ " "+ message.getSenderId() + " " + message.getDestId());
+                    link.deliver(message);
                 }catch(ClassNotFoundException e){
                     System.out.println("Error while deserializing "+e);
                 }
+
+
                 iStream.close();
             }catch(IOException e){
                 System.out.println("I/O Error " + e);
