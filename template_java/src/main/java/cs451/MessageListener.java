@@ -11,7 +11,7 @@ import java.net.SocketException;
 public class MessageListener implements Runnable {
 
     private DatagramSocket socket;
-    private byte[] buf = new byte[256];
+    private byte[] buf = new byte[512];
     private int duration = 10000;
     private Links link;
 

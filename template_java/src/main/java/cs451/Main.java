@@ -73,11 +73,13 @@ public class Main {
         new Thread(ml).start();
 
         System.out.println("Sending messages to "+ perfectLinkHostId);
-
-        for(int i=1; i<=nbMessages;i++){
-            Message m = new Message(i, myID, me.getIp(), me.getPort(), perfectLinkHostId, destHost.getIp(), destHost.getPort(), "");
-            pl.send(m);
+        if(! (myID == perfectLinkHostId)){
+            for(int i=1; i<=nbMessages;i++){
+                Message m = new Message(i, myID, me.getIp(), me.getPort(), perfectLinkHostId, destHost.getIp(), destHost.getPort(), "");
+                pl.send(m);
+            }
         }
+
 
         System.out.println("Broadcasting and delivering messages...\n");
 
