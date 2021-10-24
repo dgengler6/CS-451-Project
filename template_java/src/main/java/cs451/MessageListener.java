@@ -11,7 +11,6 @@ import java.net.SocketException;
 public class MessageListener implements Runnable {
 
     private DatagramSocket socket;
-    private boolean running;
     private byte[] buf = new byte[256];
     private int duration = 10000;
     private Links link;
@@ -30,9 +29,8 @@ public class MessageListener implements Runnable {
     }
 
     public void run() {
-        running = true;
 
-        while (running) {
+        while (true) {
             DatagramPacket packet = new DatagramPacket(buf, buf.length);
             try {
                 socket.receive(packet);
@@ -56,6 +54,5 @@ public class MessageListener implements Runnable {
             }
 
         }
-        socket.close();
     }
 }

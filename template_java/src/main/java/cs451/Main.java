@@ -76,7 +76,7 @@ public class Main {
             //FairLossLinks fll = new FairLossLinks(parser.output());
             //StubbornLinks stb = new StubbornLinks(parser.output());
             PerfectLinks pl = new PerfectLinks(parser.output());
-            for(int i=0; i<nbMessages;i++){
+            for(int i=1; i<=nbMessages;i++){
                 Message m = new Message(i, myID, me.getIp(), perfectLinkHostId, destHost.getIp(), destHost.getPort(), "");
                 pl.send(m);
             }
