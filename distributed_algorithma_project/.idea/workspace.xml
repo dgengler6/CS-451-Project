@@ -2,12 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f055dc9e-a362-4732-9dd1-5022778a9303" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../template_java/src/main/java/cs451/FairLossLinks.java" beforeDir="false" afterPath="$PROJECT_DIR$/../template_java/src/main/java/cs451/FairLossLinks.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../template_java/src/main/java/cs451/Links.java" beforeDir="false" afterPath="$PROJECT_DIR$/../template_java/src/main/java/cs451/Links.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../template_java/src/main/java/cs451/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../template_java/src/main/java/cs451/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../template_java/src/main/java/cs451/MessageListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/../template_java/src/main/java/cs451/MessageListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../template_java/src/main/java/cs451/PerfectLinks.java" beforeDir="false" afterPath="$PROJECT_DIR$/../template_java/src/main/java/cs451/PerfectLinks.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../template_java/src/main/java/cs451/StubbornLinks.java" beforeDir="false" afterPath="$PROJECT_DIR$/../template_java/src/main/java/cs451/StubbornLinks.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/../template_java/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -21,8 +16,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../template_java/src/main/java/cs451/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="510">
-              <caret line="70" column="58" selection-start-line="70" selection-start-column="58" selection-end-line="70" selection-end-column="58" />
+            <state relative-caret-position="543">
+              <caret line="75" lean-forward="true" selection-start-line="75" selection-end-line="75" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -104,8 +99,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/../template_java/src/main/java/cs451/MessageListener.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="705">
-              <caret line="47" column="21" selection-start-line="47" selection-start-column="21" selection-end-line="47" selection-end-column="21" />
+            <state relative-caret-position="720">
+              <caret line="48" column="43" selection-start-line="48" selection-start-column="43" selection-end-line="48" selection-end-column="43" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -176,10 +171,10 @@
         <option value="$PROJECT_DIR$/../template_java/src/main/java/cs451/Ack.java" />
         <option value="$PROJECT_DIR$/../template_java/src/main/java/cs451/Links.java" />
         <option value="$PROJECT_DIR$/../template_java/src/main/java/cs451/FairLossLinks.java" />
-        <option value="$PROJECT_DIR$/../template_java/src/main/java/cs451/MessageListener.java" />
         <option value="$PROJECT_DIR$/../template_java/src/main/java/cs451/StubbornLinks.java" />
         <option value="$PROJECT_DIR$/../template_java/src/main/java/cs451/PerfectLinks.java" />
         <option value="$PROJECT_DIR$/../template_java/src/main/java/cs451/Main.java" />
+        <option value="$PROJECT_DIR$/../template_java/src/main/java/cs451/MessageListener.java" />
       </list>
     </option>
   </component>
@@ -237,7 +232,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1635110429568" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1635110744640" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RunDashboard">
@@ -435,6 +430,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/../template_java/src/main/java/cs451/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="543">
+          <caret line="75" lean-forward="true" selection-start-line="75" selection-end-line="75" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/../template_java/src/main/java/cs451/Message.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="705">
@@ -471,20 +476,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../template_java/src/main/java/cs451/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="70" column="58" selection-start-line="70" selection-start-column="58" selection-end-line="70" selection-end-column="58" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../template_java/src/main/java/cs451/MessageListener.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="705">
-          <caret line="47" column="21" selection-start-line="47" selection-start-column="21" selection-end-line="47" selection-end-column="21" />
+        <state relative-caret-position="720">
+          <caret line="48" column="43" selection-start-line="48" selection-start-column="43" selection-end-line="48" selection-end-column="43" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
