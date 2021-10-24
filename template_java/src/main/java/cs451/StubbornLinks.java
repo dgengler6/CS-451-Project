@@ -41,7 +41,7 @@ public class StubbornLinks implements Links{
     }
 
     public void stubbornSend(){
-        System.out.println(String.format("Periodic Resend of %d messages", sent.size()));
+        //System.out.println(String.format("Periodic Resend of %d messages", sent.size()));
         for(int i=0;i<sent.size();i++){
             fll.send(sent.get(i));
         }
