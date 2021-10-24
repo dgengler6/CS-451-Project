@@ -10,7 +10,7 @@ public class StubbornLinks implements Links{
 
     private FairLossLinks fll;
     private ArrayList<Message> sent;
-    private int delay = 5000;
+    private int delay = 100;
 
     public StubbornLinks(String outputPath){
         this.fll = new FairLossLinks(outputPath);
