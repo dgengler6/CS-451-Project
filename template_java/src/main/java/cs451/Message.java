@@ -7,16 +7,18 @@ public class Message implements Serializable {
     private int seqNbr;
     private int senderId;
     private String senderIp;
+    private int senderPort;
     private int destId;
     private String destIp;
     private int destPort;
     private String content;
 
 
-    public Message(int seqNbr, int senderId, String senderIp, int destId, String destIp, int destPort, String content){
+    public Message(int seqNbr, int senderId, String senderIp, int senderPort, int destId, String destIp, int destPort, String content){
         this.seqNbr = seqNbr;
         this.senderId = senderId;
         this.senderIp = senderIp;
+        this.senderPort = senderPort;
         this.destId = destId;
         this.destIp = destIp;
         this.destPort = destPort;
@@ -33,6 +35,10 @@ public class Message implements Serializable {
 
     public String getSenderIp() {
         return senderIp;
+    }
+
+    public int getSenderPort() {
+        return senderPort;
     }
 
     public int getDestId() {

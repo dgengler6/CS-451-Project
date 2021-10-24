@@ -8,9 +8,9 @@ public class PerfectLinks implements Links {
     private StubbornLinks stb;
     private ArrayList<Message> delivered;
 
-    public PerfectLinks(String outputPath){
+    public PerfectLinks(String outputPath, int port){
         this.outputPath = outputPath;
-        this.stb = new StubbornLinks(outputPath);
+        this.stb = new StubbornLinks(outputPath, port);
         this.delivered = new ArrayList<>();
 
     }
