@@ -67,20 +67,18 @@ public class Main {
         System.out.println(String.format("m = %d , i = %d", nbMessages, perfectLinkHostId));
         Host destHost = hosts.get(perfectLinkHostId - 1);
 
-        if( perfectLinkHostId == myID){
-            System.out.println("Recieving messages");
-           MessageListener ml = new MessageListener(me.getPort(), 0, new PerfectLinks(parser.output(), me.getPort()));
-           new Thread(ml).start();
-        }else{
-            System.out.println("Sending messages to "+ perfectLinkHostId);
-            //FairLossLinks fll = new FairLossLinks(parser.output());
-            //StubbornLinks stb = new StubbornLinks(parser.output());
-            PerfectLinks pl = new PerfectLinks(parser.output(), me.getPort());
-            for(int i=1; i<=nbMessages;i++){
-                Message m = new Message(i, myID, me.getIp(), me.getPort(), perfectLinkHostId, destHost.getIp(), destHost.getPort(), "");
-                pl.send(m);
-            }
+        System.out.println("Recieving messages");
+        PerfectLinks pl = new PerfectLinks(parser.output());
+        MessageListener ml = new MessageListener(me.getPort(), 0, pl);
+        new Thread(ml).start();
+
+        System.out.println("Sending messages to "+ perfectLinkHostId);
+
+        for(int i=1; i<=nbMessages;i++){
+            Message m = new Message(i, myID, me.getIp(), me.getPort(), perfectLinkHostId, destHost.getIp(), destHost.getPort(), "");
+            pl.send(m);
         }
+
         System.out.println("Broadcasting and delivering messages...\n");
 
 

@@ -41,4 +41,8 @@ public class FairLossLinks implements Links{
     public void deliver(Message message){
         OutputWriter.writeDeliver(message, outputPath, true);
     }
+
+    public void handleAck(Ack ack) {
+
+    }
 }

@@ -41,8 +41,11 @@ public class MessageListener implements Runnable {
                 ObjectInputStream iStream = new ObjectInputStream(new ByteArrayInputStream(packet.getData()));
                 try {
                     Message message = (Message) iStream.readObject();
-                    link.deliver(message);
-                    //message.printMessage();
+                    if (message instanceof Ack){
+                        link.handleAck((Ack)message);
+                    }else{
+                        link.deliver(message);
+                    }
                 }catch(ClassNotFoundException e){
                     System.out.println("Error while deserializing "+e);
                 }
