@@ -46,7 +46,6 @@ public class MessageListener implements Runnable {
                     }else{
                         link.deliver(message);
                     }
-                    message.printMessage();
                 }catch(ClassNotFoundException e){
                     System.out.println("Error while deserializing "+e);
                 }
