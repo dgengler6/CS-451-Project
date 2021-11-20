@@ -16,6 +16,7 @@ public class BestEffortBroadcast implements Broadcast, Observer {
         this.hosts = hosts;
     }
 
+    @Override
     public void broadcast(int m){
         for(int i = 0; i < hosts.size(); i++){
             Host dest = hosts.get(i);
@@ -28,6 +29,7 @@ public class BestEffortBroadcast implements Broadcast, Observer {
 
     }
 
+    @Override
     public void deliver(Message message){
         if(observer == null){
             OutputWriter.writeDeliver(message, true);

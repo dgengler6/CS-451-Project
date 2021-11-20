@@ -86,12 +86,16 @@ public class Main {
 
         System.out.println("Broadcasting and delivering messages...\n");
 
+        /*
         BestEffortBroadcast beb = new BestEffortBroadcast(hosts, me, null);
 
         for(int i=1; i<=nbMessages;i++){
             beb.broadcast(i);
         }
-
+        */
+        UniformReliableBroadcast urb = new UniformReliableBroadcast(hosts, me, null);
+        System.out.println(hosts);
+        System.out.println(urb.correct);
 
 
         // After a process finishes broadcasting,

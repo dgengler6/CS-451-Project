@@ -36,6 +36,7 @@ public class StubbornLinks implements Links, Observer{
 
     }
 
+    @Override
     public void send(Message message){
         System.out.println(String.format("Sending message %d, on link %s",message.getSeqNbr(),"STB"));
         fll.send(message);
@@ -50,6 +51,7 @@ public class StubbornLinks implements Links, Observer{
         }
     }
 
+    @Override
     public void deliver(Message message){
         System.out.println(String.format("Delivering message %d, on link %s",message.getSeqNbr(),"STB"));
         if(observer == null){
@@ -60,6 +62,7 @@ public class StubbornLinks implements Links, Observer{
         fll.send(new Ack(message));
     }
 
+    @Override
     public void handleAck(Ack ack){
         ack.printMessage();
         sent.remove(ack.getMessage());

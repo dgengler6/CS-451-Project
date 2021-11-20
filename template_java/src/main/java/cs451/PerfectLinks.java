@@ -15,6 +15,7 @@ public class PerfectLinks implements Links, Observer {
 
     }
 
+    @Override
     public void send(Message message){
         System.out.println(String.format("Sending message %d, on link %s",message.getSeqNbr(),"PL"));
         if(observer == null){
@@ -23,6 +24,7 @@ public class PerfectLinks implements Links, Observer {
         stb.send(message);
     }
 
+    @Override
     public void deliver(Message message){
         System.out.println(String.format("Delivering message %d, on link %s",message.getSeqNbr(),"PL"));
         if (!delivered.contains(message)){
@@ -35,6 +37,7 @@ public class PerfectLinks implements Links, Observer {
         }
     }
 
+    @Override
     public void handleAck(Ack ack) { }
 
 }

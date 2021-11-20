@@ -20,6 +20,7 @@ public class FairLossLinks implements Links{
         new Thread(ml).start();
     }
 
+    @Override
     public void send(Message message){
         System.out.println(String.format("Sending message %d, on link %s",message.getSeqNbr(),"FLL"));
         byte[] buf;
@@ -41,6 +42,7 @@ public class FairLossLinks implements Links{
 
     }
 
+    @Override
     public void deliver(Message message){
         System.out.println(String.format("Delivering message %d, on link %s",message.getSeqNbr(),"FLL"));
         if(observer == null){
@@ -51,6 +53,7 @@ public class FairLossLinks implements Links{
 
     }
 
+    @Override
     public void handleAck(Ack ack) {
         if(this.observer != null) {
             observer.handleAck(ack);
