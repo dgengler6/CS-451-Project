@@ -67,15 +67,14 @@ public class Main {
         System.out.println(String.format("m = %d , i = %d", nbMessages, perfectLinkHostId));
         Host destHost = hosts.get(perfectLinkHostId - 1);
 
-        System.out.println("Recieving messages");
         OutputWriter.setOutputPath(parser.output());
         MessageListener.setPort(me.getPort());
         PerfectLinks pl = new PerfectLinks(null);
 
-        
+
         if(! (myID == perfectLinkHostId)){
             System.out.println("Sending messages to "+ perfectLinkHostId);
-            for(int i=1; i<=nbMessages;i++){
+            for(int i=1; i<=3;i++){
                 Message m = new Message(i, myID, me.getIp(), me.getPort(), perfectLinkHostId, destHost.getIp(), destHost.getPort(), "");
                 pl.send(m);
             }

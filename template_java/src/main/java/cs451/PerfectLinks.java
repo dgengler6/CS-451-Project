@@ -16,11 +16,13 @@ public class PerfectLinks implements Links, Observer {
     }
 
     public void send(Message message){
+        System.out.println(String.format("Sending message %d, on link %s",message.getSeqNbr(),"PL"));
         OutputWriter.writeBroadcast(message, true);
         stb.send(message);
     }
 
     public void deliver(Message message){
+        System.out.println(String.format("Delivering message %d, on link %s",message.getSeqNbr(),"PL"));
         if (!delivered.contains(message)){
             if(observer == null){
                 OutputWriter.writeDeliver(message, true);
