@@ -63,29 +63,34 @@ public class Main {
         Host me = hosts.get(myID - 1);
         int nbMessages = parser.nbMessages();
 
+        OutputWriter.setOutputPath(parser.output());
+        MessageListener.setListeningPort(me.getPort());
+
+        /* Perfect link implementation
+
         int perfectLinkHostId = parser.perfectLinkHostId();
         System.out.println(String.format("m = %d , i = %d", nbMessages, perfectLinkHostId));
         Host destHost = hosts.get(perfectLinkHostId - 1);
-
-        OutputWriter.setOutputPath(parser.output());
-        MessageListener.setPort(me.getPort());
         PerfectLinks pl = new PerfectLinks(null);
 
 
         if(! (myID == perfectLinkHostId)){
             System.out.println("Sending messages to "+ perfectLinkHostId);
-            for(int i=1; i<=3;i++){
+            for(int i=1; i<=nbMessages;i++){
                 Message m = new Message(i, myID, me.getIp(), me.getPort(), perfectLinkHostId, destHost.getIp(), destHost.getPort(), "");
                 pl.send(m);
             }
         }
+        */
 
 
         System.out.println("Broadcasting and delivering messages...\n");
 
+        BestEffortBroadcast beb = new BestEffortBroadcast(hosts, me, null);
 
-        // The idea here would be to create a thread for each msg and send it repeat to all hosts.
-
+        for(int i=1; i<=nbMessages;i++){
+            beb.broadcast(i);
+        }
 
 
 

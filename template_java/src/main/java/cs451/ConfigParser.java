@@ -12,8 +12,8 @@ public class ConfigParser {
 
     private String path;
 
-    private int nbMessages;
-    private int perfectLinkHostId;
+    private int nbMessages = 0;
+    private int perfectLinkHostId = 0;
     // We'll use that latter, might as well add it now
     private int[][] localizedCausalBroadcastProcesses;
 

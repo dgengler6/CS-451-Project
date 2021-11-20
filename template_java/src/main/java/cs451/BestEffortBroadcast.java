@@ -1,17 +1,18 @@
 package cs451;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class BestEffortBroadcast implements Broadcast, Observer {
 
     private PerfectLinks pl;
     private Observer observer;
     private Host self;
-    private ArrayList<Host> hosts;
+    private List<Host> hosts;
 
-    public BestEffortBroadcast(ArrayList<Host> hosts, Host self){
+    public BestEffortBroadcast(List<Host> hosts, Host self, Observer observer){
         this.pl = new PerfectLinks(this);
         this.self = self;
+        this.observer = observer;
         this.hosts = hosts;
     }
 

@@ -58,5 +58,5 @@ public class MessageListener implements Runnable {
         }
     }
 
-    public static void setPort(int port) {MessageListener.port = port;}
+    public static void setListeningPort(int port) {MessageListener.port = port;}
 }
