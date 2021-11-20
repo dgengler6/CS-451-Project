@@ -16,12 +16,14 @@ public class BestEffortBroadcast implements Broadcast, Observer {
         this.hosts = hosts;
     }
 
-    public void broadcast(int message){
+    public void broadcast(int m){
         for(int i = 0; i < hosts.size(); i++){
             Host dest = hosts.get(i);
-            Message m = new Message(message, self.getId(), self.getIp(), self.getPort(), dest.getId(), dest.getIp(), dest.getPort(), "");
-            OutputWriter.writeBroadcast(m, true); // Add this if using BeB at root
-            pl.send(m);
+            Message message = new Message(m, self.getId(), self.getIp(), self.getPort(), dest.getId(), dest.getIp(), dest.getPort(), "");
+            if(observer == null){
+                OutputWriter.writeBroadcast(message, true);
+            }
+            pl.send(message);
         }
 
     }
