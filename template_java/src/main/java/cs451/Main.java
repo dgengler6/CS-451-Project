@@ -68,11 +68,11 @@ public class Main {
         Host destHost = hosts.get(perfectLinkHostId - 1);
 
         System.out.println("Recieving messages");
-        PerfectLinks pl = new PerfectLinks(parser.output());
-        MessageListener ml = new MessageListener(me.getPort(), 0, pl);
-        new Thread(ml).start();
+        OutputWriter.setOutputPath(parser.output());
+        MessageListener.setPort(me.getPort());
+        PerfectLinks pl = new PerfectLinks(null);
 
-
+        
         if(! (myID == perfectLinkHostId)){
             System.out.println("Sending messages to "+ perfectLinkHostId);
             for(int i=1; i<=nbMessages;i++){

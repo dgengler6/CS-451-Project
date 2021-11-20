@@ -2,32 +2,35 @@ package cs451;
 
 import java.util.ArrayList;
 
-public class PerfectLinks implements Links {
+public class PerfectLinks implements Links, Observer {
 
-    private String outputPath;
     private StubbornLinks stb;
+    private Observer observer;
     private ArrayList<Message> delivered;
 
-    public PerfectLinks(String outputPath){
-        this.outputPath = outputPath;
-        this.stb = new StubbornLinks(outputPath);
+    public PerfectLinks(Observer observer){
+        this.stb = new StubbornLinks(this);
+        this.observer = observer;
         this.delivered = new ArrayList<>();
 
     }
 
     public void send(Message message){
-        OutputWriter.writeBroadcast(message, outputPath, true);
+        OutputWriter.writeBroadcast(message, true);
         stb.send(message);
     }
 
     public void deliver(Message message){
         if (!delivered.contains(message)){
-            stb.deliver(message);
+            if(observer == null){
+                OutputWriter.writeDeliver(message, true);
+            } else {
+                observer.deliver(message);
+            }
             delivered.add(message);
         }
     }
 
-    public void handleAck(Ack ack) {
-        stb.handleAck(ack);
-    }
+    public void handleAck(Ack ack) { }
+
 }

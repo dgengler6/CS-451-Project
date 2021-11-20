@@ -10,17 +10,16 @@ import java.net.SocketException;
 
 public class MessageListener implements Runnable {
 
+    private static int port;
     private DatagramSocket socket;
     private byte[] buf = new byte[512];
-    private int duration = 10000;
     private Links link;
 
     /*
         UDP listener on port "port" for "duration" milliseconds, using "link" for connection
      */
-    public MessageListener(int port, int duration, Links link) {
+    public MessageListener(Links link) {
         try {
-            this.duration = duration;
             this.link = link;
             socket = new DatagramSocket(port);
         } catch( SocketException e){
@@ -58,4 +57,6 @@ public class MessageListener implements Runnable {
 
         }
     }
+
+    public static void setPort(int port) {MessageListener.port = port;}
 }

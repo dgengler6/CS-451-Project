@@ -10,12 +10,14 @@ import java.net.InetAddress;
 
 public class FairLossLinks implements Links{
 
-    private String outputPath;
+    private Links observer;
     private DatagramSocket socket;
     private DatagramPacket packet;
 
-    public FairLossLinks(String outputPath){
-        this.outputPath = outputPath;
+    public FairLossLinks(Links observer){
+        this.observer = observer;
+        MessageListener ml = new MessageListener(this);
+        new Thread(ml).start();
     }
 
     public void send(Message message){
@@ -39,10 +41,18 @@ public class FairLossLinks implements Links{
     }
 
     public void deliver(Message message){
-        OutputWriter.writeDeliver(message, outputPath, true);
+        if(observer == null){
+            OutputWriter.writeDeliver(message, true);
+        } else {
+            observer.deliver(message);
+        }
+
     }
 
     public void handleAck(Ack ack) {
+        if(this.observer != null) {
+            observer.handleAck(ack);
+        }
 
     }
 }

@@ -6,14 +6,16 @@ import java.io.ObjectInputStream;
 import java.net.*;
 import java.util.ArrayList;
 
-public class StubbornLinks implements Links{
+public class StubbornLinks implements Links, Observer{
 
     private FairLossLinks fll;
+    private Observer observer;
     private ArrayList<Message> sent;
     private int delay = 100;
 
-    public StubbornLinks(String outputPath){
-        this.fll = new FairLossLinks(outputPath);
+    public StubbornLinks(Observer observer){
+        this.fll = new FairLossLinks(this);
+        this.observer = observer;
         this.sent = new ArrayList<>();
 
         System.out.println("Starting periodic resend of all sent messages thread");
@@ -48,7 +50,11 @@ public class StubbornLinks implements Links{
     }
 
     public void deliver(Message message){
-        fll.deliver(message);
+        if(observer == null){
+            OutputWriter.writeDeliver(message, true);
+        } else {
+            observer.deliver(message);
+        }
         fll.send(new Ack(message));
     }
 
