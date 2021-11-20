@@ -96,6 +96,9 @@ public class Main {
         UniformReliableBroadcast urb = new UniformReliableBroadcast(hosts, me, null);
         System.out.println(hosts);
         System.out.println(urb.correct);
+        hosts.remove(2);
+        System.out.println(hosts);
+        System.out.println(urb.correct);
 
 
         // After a process finishes broadcasting,
