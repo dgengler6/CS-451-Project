@@ -17,7 +17,7 @@ public class PerfectLinks implements Links, Observer {
 
     public void send(Message message){
         System.out.println(String.format("Sending message %d, on link %s",message.getSeqNbr(),"PL"));
-        OutputWriter.writeBroadcast(message, true);
+        //OutputWriter.writeBroadcast(message, true); // Add this if using perfect links at root
         stb.send(message);
     }
 
