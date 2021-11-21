@@ -73,7 +73,7 @@ public class StubbornLinks implements Links, Observer{
         ack.printMessage();
         Message am = ack.getMessage();
         sent.remove(am);
-        sent.removeIf(m -> m.getSenderId() == am.getSenderId() && m.getSeqNbr() == am.getSeqNbr());
+        sent.removeIf(m -> m.getSenderId() == am.getSenderId() && m.getDestId() == am.getDestId() && m.getSeqNbr() == am.getSeqNbr());
     }
 
 
