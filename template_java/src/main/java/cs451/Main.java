@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.Socket;
+import java.util.HashSet;
 import java.util.List;
 
 public class Main {
@@ -86,19 +87,15 @@ public class Main {
 
         System.out.println("Broadcasting and delivering messages...\n");
 
-        /*
-        BestEffortBroadcast beb = new BestEffortBroadcast(hosts, me, null);
+
+        BestEffortBroadcast beb = new BestEffortBroadcast(new HashSet<>(hosts), me, null);
 
         for(int i=1; i<=nbMessages;i++){
-            beb.broadcast(i);
+            Message m = new Message(i, myID, me.getIp(), me.getPort(), "");
+            beb.broadcast(m);
         }
-        */
-        UniformReliableBroadcast urb = new UniformReliableBroadcast(hosts, me, null);
-        System.out.println(hosts);
-        System.out.println(urb.correct);
-        hosts.remove(2);
-        System.out.println(hosts);
-        System.out.println(urb.correct);
+
+        //UniformReliableBroadcast urb = new UniformReliableBroadcast(hosts, me, null);
 
 
         // After a process finishes broadcasting,

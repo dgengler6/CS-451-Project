@@ -11,10 +11,38 @@ public class Message implements Serializable {
     private int destId;
     private String destIp;
     private int destPort;
+    private int forwardId;
+    private String forwardIp;
+    private int forwardPort;
     private String content;
 
+    /**
+     * Builds a default message, without specifying forwarder or destination, this canbe updated later.
+     * Use when you know you want to send a message but you don't know yet where.
+     * @param seqNbr
+     * @param senderId
+     * @param senderIp
+     * @param senderPort
+     * @param content
+     */
+    public Message(int seqNbr, int senderId, String senderIp, int senderPort,  String content){
+        this.seqNbr = seqNbr;
+        this.senderId = senderId;
+        this.senderIp = senderIp;
+        this.senderPort = senderPort;
+        this.destId = senderId;
+        this.destIp = senderIp;
+        this.destPort = senderPort;
+        this.forwardId = senderId;
+        this.forwardIp = senderIp;
+        this.forwardPort = senderPort;
+        this.content = content;
+    }
 
-    public Message(int seqNbr, int senderId, String senderIp, int senderPort, int destId, String destIp, int destPort, String content){
+    /**
+     * Builds a message without specifying the forwarder, this assumes that this is the same as sender
+     */
+    public Message(int seqNbr, int senderId, String senderIp, int senderPort, int destId, String destIp, int destPort,  String content){
         this.seqNbr = seqNbr;
         this.senderId = senderId;
         this.senderIp = senderIp;
@@ -22,6 +50,26 @@ public class Message implements Serializable {
         this.destId = destId;
         this.destIp = destIp;
         this.destPort = destPort;
+        this.forwardId = senderId;
+        this.forwardIp = senderIp;
+        this.forwardPort = senderPort;
+        this.content = content;
+    }
+
+    /**
+     * Builds a message with all parameters
+     */
+    public Message(int seqNbr, int senderId, String senderIp, int senderPort, int destId, String destIp, int destPort, int forwardId, String forwardIp, int forwardPort, String content){
+        this.seqNbr = seqNbr;
+        this.senderId = senderId;
+        this.senderIp = senderIp;
+        this.senderPort = senderPort;
+        this.destId = destId;
+        this.destIp = destIp;
+        this.destPort = destPort;
+        this.forwardId = forwardId;
+        this.forwardIp = forwardIp;
+        this.forwardPort = forwardPort;
         this.content = content;
     }
 
@@ -53,12 +101,30 @@ public class Message implements Serializable {
         return destPort;
     }
 
+    public int getForwardId() { return forwardId; }
+
+    public String getForwardIp() { return forwardIp; }
+
+    public int getForwardPort() { return forwardPort; }
+
     public String getContent() {
         return content;
     }
 
+    public void updateDestInfos(int destId, String destIp, int destPort){
+        this.destId = destId;
+        this.destIp = destIp;
+        this.destPort = destPort;
+    }
+
+    public void updateForwardInfos(int forwardId, String forwardIp, int forwardPort){
+        this.forwardId = forwardId;
+        this.forwardIp = forwardIp;
+        this.forwardPort = forwardPort;
+    }
+
     public void printMessage(){
-        System.out.println(String.format("msg %d from %d to %d. port %d. Content : %s.", seqNbr, senderId, destId, destPort, content));
+        System.out.println(String.format("msg %d originally sent by %d to %d. port %d. Forwarded by %d. Content : %s.", seqNbr, senderId, destId, destPort, forwardId, content));
     }
 
     @Override

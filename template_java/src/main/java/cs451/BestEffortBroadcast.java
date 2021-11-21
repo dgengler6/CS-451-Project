@@ -1,32 +1,40 @@
 package cs451;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class BestEffortBroadcast implements Broadcast, Observer {
 
     private PerfectLinks pl;
     private Observer observer;
     private Host self;
-    private List<Host> hosts;
+    private Set<Host> hosts;
 
-    public BestEffortBroadcast(List<Host> hosts, Host self, Observer observer){
+    public BestEffortBroadcast(Set<Host> hosts, Host self, Observer observer){
         this.pl = new PerfectLinks(this);
         this.self = self;
         this.observer = observer;
         this.hosts = hosts;
     }
 
+    // TODO: Potentially use the iterator of the Set.
+
     @Override
-    public void broadcast(int m){
+    public void broadcast(Message message){
+        // Says that the forwarder is itself.
+        message.updateForwardInfos(self.getId(), self.getIp(), self.getPort());
+
+        // Get the hosts as a list and send the message to all of them.
+        Host[] hostList = hosts.toArray(new Host[0]);
+        if(observer == null){
+            OutputWriter.writeBroadcast(message, true);
+        }
         for(int i = 0; i < hosts.size(); i++){
-            Host dest = hosts.get(i);
-            Message message = new Message(m, self.getId(), self.getIp(), self.getPort(), dest.getId(), dest.getIp(), dest.getPort(), "");
-            if(observer == null){
-                OutputWriter.writeBroadcast(message, true);
-            }
+            Host dest = hostList[i];
+            message.updateDestInfos(dest.getId(), dest.getIp(), dest.getPort());
             pl.send(message);
         }
-
     }
 
     @Override
