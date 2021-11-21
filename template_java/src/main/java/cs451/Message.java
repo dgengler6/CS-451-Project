@@ -139,6 +139,7 @@ public class Message implements Serializable {
 
         return this.seqNbr == ((Message) obj).seqNbr && this.senderId == ((Message) obj).senderId &&
                 this.senderIp.equals(((Message) obj).senderIp) && this.destId == ((Message) obj).destId &&
-                this.destIp.equals(((Message) obj).destIp) && this.destPort == ((Message) obj).destPort && this.content.equals(((Message) obj).content);
+                this.destIp.equals(((Message) obj).destIp) && this.destPort == ((Message) obj).destPort && this.forwardId == ((Message) obj).forwardId &&
+                this.forwardIp.equals(((Message) obj).forwardIp) && this.forwardPort == ((Message) obj).forwardPort && this.content.equals(((Message) obj).content);
     }
 }
