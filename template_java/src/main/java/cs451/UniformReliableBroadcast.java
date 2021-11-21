@@ -39,7 +39,7 @@ public class UniformReliableBroadcast implements Broadcast, Observer {
         if(ack_for_message != null){
             ackMessage.get(message).add(message.getForwardId());
         }else{
-            ackMessage.put(message, new HashSet<>(message.getForwardId()));
+            ackMessage.put(message, new HashSet<>(Arrays.asList(message.getForwardId())));
         }
         System.out.println(ack_for_message);
         System.out.println(ackMessage.get(message));
