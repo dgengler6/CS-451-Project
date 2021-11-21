@@ -27,12 +27,15 @@ public class BestEffortBroadcast implements Broadcast, Observer {
 
         // Get the hosts as a list and send the message to all of them.
         Host[] hostList = hosts.toArray(new Host[0]);
+        System.out.println(hostList);
         if(observer == null){
             OutputWriter.writeBroadcast(message, true);
         }
-        for(int i = 0; i < hosts.size(); i++){
+        for(int i = 0; i < hostList.length; i++){
             Host dest = hostList[i];
+            message.printMessage();
             message.updateDestInfos(dest.getId(), dest.getIp(), dest.getPort());
+            message.printMessage();
             pl.send(message);
         }
     }
