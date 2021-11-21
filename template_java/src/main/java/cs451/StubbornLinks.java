@@ -11,7 +11,7 @@ public class StubbornLinks implements Links, Observer{
     private FairLossLinks fll;
     private Observer observer;
     private ArrayList<Message> sent;
-    private int delay = 1000;
+    private int delay = 10000;
 
     public StubbornLinks(Observer observer){
         this.fll = new FairLossLinks(this);
@@ -39,15 +39,16 @@ public class StubbornLinks implements Links, Observer{
     @Override
     public void send(Message message){
         //System.out.println(String.format("Sending message %d, on link %s",message.getSeqNbr(),"STB"));
-        fll.send(message);
         sent.add(message);
-
+        fll.send(message);
     }
 
     public void stubbornSend(){
         System.out.println(String.format("Periodic Resend of %d messages", sent.size()));
         for(int i=0;i<sent.size();i++){
-            fll.send(sent.get(i));
+            Message resend = sent.get(i);
+            resend.printMessage();
+            fll.send(resend);
         }
     }
 
