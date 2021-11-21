@@ -21,6 +21,7 @@ public class FifoBroadcast implements Broadcast, Observer {
         for (Host host : hosts) {
             next.put(host.getId(), 1);
         }
+        this.toBeDelivered = new ArrayList<>();
 
         this.urb = new UniformReliableBroadcast(hosts, self, this);
     }
