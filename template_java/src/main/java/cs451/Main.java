@@ -88,7 +88,7 @@ public class Main {
         System.out.println("Broadcasting and delivering messages...\n");
 
 
-        BestEffortBroadcast beb = new BestEffortBroadcast(new HashSet<>(hosts), me, null);
+        BestEffortBroadcast beb = new BestEffortBroadcast(hosts, me, null);
 
         for(int i=1; i<=nbMessages;i++){
             Message m = new Message(i, myID, me.getIp(), me.getPort(), "");

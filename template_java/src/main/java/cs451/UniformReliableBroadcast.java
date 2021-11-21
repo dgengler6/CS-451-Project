@@ -8,7 +8,7 @@ public class UniformReliableBroadcast implements Broadcast, Observer {
     private Observer observer;
     private Host self;
 
-    private Set<Host> correct;
+    private List<Host> correct;
     private List<Message> delivered;
     private List<Forward> forward;
     private Hashtable<Message, Set<Integer>> ackMessage;
@@ -17,7 +17,7 @@ public class UniformReliableBroadcast implements Broadcast, Observer {
         this.self = self;
         this.observer = observer;
 
-        this.correct = new HashSet<Host>(hosts);
+        this.correct = hosts;
         this.delivered = new ArrayList<>();
         this.forward = new ArrayList<>();
         this.ackMessage = new Hashtable<>();
@@ -32,25 +32,36 @@ public class UniformReliableBroadcast implements Broadcast, Observer {
     }
 
     @Override
-    public void deliver(Message msg) {
+    public void deliver(Message message) {
+
         // We add the ack for message msg and for the person that forwarded it.
-        Set<Integer> acked = ackMessage.get(msg);
-        if(acked != null){
-            acked.add(msg.getForwardId());
+        Set<Integer> ack_for_message = ackMessage.get(message);
+        if(ack_for_message != null){
+            ack_for_message.add(message.getForwardId());
         }else{
-            ackMessage.put(msg, new HashSet<>(msg.getForwardId()));
+            ackMessage.put(message, new HashSet<>(message.getForwardId()));
+        }
+
+        // If ack[m] > N/2 we deliver the message
+        if(canDeliver(message)){
+            if(observer == null){
+                OutputWriter.writeDeliver(message, true);
+            } else {
+                observer.deliver(message);
+            }
         }
 
         // We check if we already forwarded the message, if not we send it again.
-        Forward fwd = new Forward(msg.getForwardId(), msg);
+        Forward fwd = new Forward(message.getForwardId(), message);
         if (!forward.contains(fwd)){
             forward.add(fwd);
-            beb.broadcast(msg);
+            beb.broadcast(message);
         }
     }
 
-    private void checkDeliverable(){
 
+    private boolean canDeliver(Message message){
+        return ackMessage.get(message).size() > (correct.size() / 2);
     }
 }
 

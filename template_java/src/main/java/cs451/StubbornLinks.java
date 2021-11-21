@@ -11,7 +11,7 @@ public class StubbornLinks implements Links, Observer{
     private FairLossLinks fll;
     private Observer observer;
     private ArrayList<Message> sent;
-    private int delay = 10000;
+    private int delay = 5000;
 
     public StubbornLinks(Observer observer){
         this.fll = new FairLossLinks(this);
