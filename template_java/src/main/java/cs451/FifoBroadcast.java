@@ -28,6 +28,9 @@ public class FifoBroadcast implements Broadcast, Observer {
 
     @Override
     public void broadcast(Message message) {
+        if(observer == null && message.getSenderId() == self.getId()){
+            OutputWriter.writeBroadcast(message, true);
+        }
         urb.broadcast(message);
     }
 
