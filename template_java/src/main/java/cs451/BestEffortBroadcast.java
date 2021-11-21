@@ -23,7 +23,7 @@ public class BestEffortBroadcast implements Broadcast, Observer {
     @Override
     public void broadcast(Message message){
         // Says that the forwarder is itself.
-        message.updateForwardInfos(self.getId(), self.getIp(), self.getPort());
+        Message message_fwd = message.updateForwardInfos(self.getId(), self.getIp(), self.getPort());
 
         // Get the hosts as a list and send the message to all of them.
         Host[] hostList = hosts.toArray(new Host[0]);
@@ -33,10 +33,8 @@ public class BestEffortBroadcast implements Broadcast, Observer {
         }
         for(int i = 0; i < hostList.length; i++){
             Host dest = hostList[i];
-            message.printMessage();
-            message.updateDestInfos(dest.getId(), dest.getIp(), dest.getPort());
-            message.printMessage();
-            pl.send(message);
+            Message message_dest = message_fwd.updateDestInfos(dest.getId(), dest.getIp(), dest.getPort());
+            pl.send(message_dest);
         }
     }
 
