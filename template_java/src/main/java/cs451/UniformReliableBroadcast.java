@@ -63,8 +63,8 @@ public class UniformReliableBroadcast implements Broadcast, Observer {
 
 
     private boolean canDeliver(Message message){
-        AckMessage am = new AckMessage( message.getSenderId(), message.getSeqNbr());
-        return ackMessage.get(am).size() > (correct.size() / 2);
+        Set<Integer> acks = ackMessage.get(new AckMessage( message.getSenderId(), message.getSeqNbr()));
+        return acks != null && acks.size() > (correct.size() / 2);
     }
 }
 
