@@ -11,7 +11,7 @@ public class UniformReliableBroadcast implements Broadcast, Observer {
     private List<Host> correct;
     private List<Message> delivered;
     private List<Forward> forward;
-    private Hashtable<Message, Set<Integer>> ackMessage;
+    private Hashtable<AckMessage, Set<Integer>> ackMessage;
 
     public UniformReliableBroadcast(List<Host> hosts, Host self, Observer observer){
         this.self = self;
@@ -35,11 +35,12 @@ public class UniformReliableBroadcast implements Broadcast, Observer {
     public void deliver(Message message) {
 
         // We add the ack for message msg and for the person that forwarded it.
-        Set<Integer> ack_for_message = ackMessage.get(message);
+        AckMessage am = new AckMessage(0, message.getSenderId(), message.getSeqNbr());
+        Set<Integer> ack_for_message = ackMessage.get(am);
         if(ack_for_message != null){
-            ackMessage.get(message).add(message.getForwardId());
+            ackMessage.get(am).add(message.getForwardId());
         }else{
-            ackMessage.put(message, new HashSet<>(Arrays.asList(message.getForwardId())));
+            ackMessage.put(am, new HashSet<>(Arrays.asList(message.getForwardId())));
         }
         System.out.println(ack_for_message);
         System.out.println(ackMessage.get(message));
@@ -63,6 +64,28 @@ public class UniformReliableBroadcast implements Broadcast, Observer {
 
     private boolean canDeliver(Message message){
         return ackMessage.get(message).size() > (correct.size() / 2);
+    }
+}
+
+class AckMessage {
+    //private int forwarder;
+    private int originalSender;
+    private int message;
+
+    public AckMessage(int originalSender, int message){
+        this.originalSender = originalSender;
+        this.message = message;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == this )
+            return true;
+
+        if (!(obj instanceof AckMessage))
+            return false;
+
+        return this.originalSender == ((AckMessage) obj).originalSender && this.message == ((AckMessage) obj).message;
     }
 }
 
