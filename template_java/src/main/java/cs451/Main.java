@@ -88,11 +88,11 @@ public class Main {
         System.out.println("Broadcasting and delivering messages...\n");
 
 
-        UniformReliableBroadcast urb = new UniformReliableBroadcast(hosts, me, null);
+        FifoBroadcast fifo = new FifoBroadcast(hosts, me, null);
 
         for(int i=1; i<=nbMessages;i++){
             Message m = new Message(i, i, myID, me.getIp(), me.getPort(), "");
-            urb.broadcast(m);
+            fifo.broadcast(m);
         }
 
         //UniformReliableBroadcast urb = new UniformReliableBroadcast(hosts, me, null);
