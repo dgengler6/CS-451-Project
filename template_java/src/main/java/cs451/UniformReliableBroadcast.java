@@ -9,7 +9,7 @@ public class UniformReliableBroadcast implements Broadcast, Observer {
     private Host self;
 
     private List<Host> correct;
-    private List<Message> delivered;
+    private List<AckMessage> delivered;
     private List<Forward> forward;
     private Hashtable<AckMessage, Set<Integer>> ackMessage;
 
@@ -31,7 +31,7 @@ public class UniformReliableBroadcast implements Broadcast, Observer {
             OutputWriter.writeBroadcast(message, true);
         }
         AckMessage am = new AckMessage(message.getSenderId(), message.getSeqNbr());
-        forward.add(new Forward(message.getForwardId(), am));
+        forward.add(new Forward(message.getSenderId(), am));
         beb.broadcast(message);
     }
 
@@ -49,21 +49,22 @@ public class UniformReliableBroadcast implements Broadcast, Observer {
         }
         System.out.println(ackMessage.get(am));
         // If ack[m] > N/2 we deliver the message
-        if(!(delivered.contains(message)) && canDeliver(message)){
+        if(!(delivered.contains(am)) && canDeliver(message)){
             if(observer == null){
                 OutputWriter.writeDeliver(message, true);
             } else {
                 observer.deliver(message);
             }
-            delivered.add(message);
+            delivered.add(am);
         }
 
         // We check if we already forwarded the message, if not we send it again.
-        Forward fwd = new Forward(message.getForwardId(), am);
+        Forward fwd = new Forward(message.getSenderId(), am);
         if (!forward.contains(fwd)){
             forward.add(fwd);
             beb.broadcast(message);
         }
+        System.out.println(forward);
     }
 
 
