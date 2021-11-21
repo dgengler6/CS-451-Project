@@ -47,7 +47,7 @@ public class StubbornLinks implements Links, Observer{
         System.out.println(String.format("Periodic Resend of %d messages", sent.size()));
         for(int i=0;i<sent.size();i++){
             Message resend = sent.get(i);
-            resend.printMessage();
+            //resend.printMessage();
             fll.send(resend);
         }
     }
@@ -62,8 +62,7 @@ public class StubbornLinks implements Links, Observer{
         }
         fll.send(new Ack(message));
         if(message.getForwardId() != message.getSenderId()){
-            fll.send(new Ack(message.updateDestInfos(message.getForwardId(), message.getForwardIp(), message.getForwardPort())));
-            fll.send(new Ack(message.updateDestInfos(message.getForwardId(), message.getForwardIp(), message.getForwardPort()).updateForwardInfos(message.getDestId(), message.getDestIp(), message.getDestPort())));
+            fll.send(new Ack(message.updateDestInfos(message.getForwardId(), message.getForwardIp(), message.getForwardPort()), message));
         }
 
     }
@@ -73,7 +72,7 @@ public class StubbornLinks implements Links, Observer{
         ack.printMessage();
         Message am = ack.getMessage();
         sent.remove(am);
-        sent.removeIf(m -> m.getSenderId() == am.getSenderId() && m.getDestId() == am.getDestId() && m.getSeqNbr() == am.getSeqNbr());
+        //sent.removeIf(m -> m.getSenderId() == am.getSenderId() && m.getDestId() == am.getDestId() && m.getSeqNbr() == am.getSeqNbr());
     }
 
 

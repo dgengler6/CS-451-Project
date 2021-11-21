@@ -5,6 +5,7 @@ import java.io.Serializable;
 public class Message implements Serializable {
     private static final long serialVersionUID = 1L;
     private int seqNbr;
+    private int order;
     private int senderId;
     private String senderIp;
     private int senderPort;
@@ -25,8 +26,9 @@ public class Message implements Serializable {
      * @param senderPort
      * @param content
      */
-    public Message(int seqNbr, int senderId, String senderIp, int senderPort,  String content){
+    public Message(int seqNbr, int order, int senderId, String senderIp, int senderPort,  String content){
         this.seqNbr = seqNbr;
+        this.order = order;
         this.senderId = senderId;
         this.senderIp = senderIp;
         this.senderPort = senderPort;
@@ -42,8 +44,9 @@ public class Message implements Serializable {
     /**
      * Builds a message without specifying the forwarder, this assumes that this is the same as sender
      */
-    public Message(int seqNbr, int senderId, String senderIp, int senderPort, int destId, String destIp, int destPort,  String content){
+    public Message(int seqNbr, int order, int senderId, String senderIp, int senderPort, int destId, String destIp, int destPort,  String content){
         this.seqNbr = seqNbr;
+        this.order = order;
         this.senderId = senderId;
         this.senderIp = senderIp;
         this.senderPort = senderPort;
@@ -59,8 +62,9 @@ public class Message implements Serializable {
     /**
      * Builds a message with all parameters
      */
-    public Message(int seqNbr, int senderId, String senderIp, int senderPort, int destId, String destIp, int destPort, int forwardId, String forwardIp, int forwardPort, String content){
+    public Message(int seqNbr, int order, int senderId, String senderIp, int senderPort, int destId, String destIp, int destPort, int forwardId, String forwardIp, int forwardPort, String content){
         this.seqNbr = seqNbr;
+        this.order = order;
         this.senderId = senderId;
         this.senderIp = senderIp;
         this.senderPort = senderPort;
@@ -76,6 +80,8 @@ public class Message implements Serializable {
     public int getSeqNbr() {
         return seqNbr;
     }
+
+    public int getOrder() { return order; }
 
     public int getSenderId() {
         return senderId;
@@ -115,14 +121,14 @@ public class Message implements Serializable {
         /*this.destId = destId;
         this.destIp = destIp;
         this.destPort = destPort;*/
-        return new Message(this.seqNbr, this.senderId, this.senderIp, this.senderPort, destId, destIp, destPort, this.forwardId, this.forwardIp, this.forwardPort, this.content);
+        return new Message(this.seqNbr, this.order, this.senderId, this.senderIp, this.senderPort, destId, destIp, destPort, this.forwardId, this.forwardIp, this.forwardPort, this.content);
     }
 
     public Message updateForwardInfos(int forwardId, String forwardIp, int forwardPort){
         /*this.forwardId = forwardId;
         this.forwardIp = forwardIp;
         this.forwardPort = forwardPort;*/
-        return new Message(this.seqNbr, this.senderId, this.senderIp, this.senderPort, this.destId, this.destIp, this.destPort, forwardId, forwardIp, forwardPort, this.content);
+        return new Message(this.seqNbr, this.order, this.senderId, this.senderIp, this.senderPort, this.destId, this.destIp, this.destPort, forwardId, forwardIp, forwardPort, this.content);
     }
 
     public void printMessage(){
@@ -137,7 +143,7 @@ public class Message implements Serializable {
         if (!(obj instanceof Message))
             return false;
 
-        return this.seqNbr == ((Message) obj).seqNbr && this.senderId == ((Message) obj).senderId &&
+        return this.seqNbr == ((Message) obj).seqNbr && this.order == ((Message) obj).order && this.senderId == ((Message) obj).senderId &&
                 this.senderIp.equals(((Message) obj).senderIp) && this.destId == ((Message) obj).destId &&
                 this.destIp.equals(((Message) obj).destIp) && this.destPort == ((Message) obj).destPort && this.forwardId == ((Message) obj).forwardId &&
                 this.forwardIp.equals(((Message) obj).forwardIp) && this.forwardPort == ((Message) obj).forwardPort && this.content.equals(((Message) obj).content);
