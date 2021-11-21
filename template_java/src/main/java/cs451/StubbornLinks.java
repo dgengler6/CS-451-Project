@@ -62,7 +62,7 @@ public class StubbornLinks implements Links, Observer{
         }
         fll.send(new Ack(message));
         if(message.getForwardId() != message.getSenderId()){
-            fll.send(new Ack(message.updateDestInfos(message.getForwardId(), message.getForwardIp(), message.getForwardPort()), message));
+            fll.send(new Ack(message, message));
         }
 
     }
