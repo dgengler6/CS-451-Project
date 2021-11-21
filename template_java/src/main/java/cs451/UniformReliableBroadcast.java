@@ -35,7 +35,8 @@ public class UniformReliableBroadcast implements Broadcast, Observer {
     public void deliver(Message message) {
 
         // We add the ack for message msg and for the person that forwarded it.
-        AckMessage am = new AckMessage( message.getSenderId(), message.getSeqNbr());
+        AckMessage am = new AckMessage(message.getSenderId(), message.getSeqNbr());
+        am.printAck();
         Set<Integer> ack_for_message = ackMessage.get(am);
         if(ack_for_message != null){
             ackMessage.get(am).add(message.getForwardId());
@@ -76,6 +77,10 @@ class AckMessage {
     public AckMessage(int originalSender, int message){
         this.originalSender = originalSender;
         this.message = message;
+    }
+
+    public void printAck(){
+        System.out.println(String.format("Ack for message %d originally sent by %d", message, originalSender));
     }
 
     @Override
