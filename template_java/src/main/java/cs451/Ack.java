@@ -15,5 +15,6 @@ public class Ack extends Message {
     @Override
     public void printMessage(){
         System.out.println(String.format("recieved ack for msg %d from %d", message.getSeqNbr(), message.getDestId()));
+        message.printMessage();
     }
 }
