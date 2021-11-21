@@ -4,7 +4,7 @@ public class Ack extends Message {
 
     private Message message;
     public Ack( Message message){
-        super( message.getSeqNbr(),  message.getDestId(),  message.getDestIp(), message.getDestPort(),  message.getSenderId(),  message.getSenderIp(),  message.getSenderPort(),  "");
+        super( message.getSeqNbr(),  message.getDestId(),  message.getDestIp(), message.getDestPort(),  message.getSenderId(),  message.getSenderIp(),  message.getSenderPort(), message.getForwardId(), message.getForwardIp(), message.getForwardPort(),  "");
         this.message = message;
     }
 
