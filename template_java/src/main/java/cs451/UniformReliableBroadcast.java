@@ -27,7 +27,8 @@ public class UniformReliableBroadcast implements Broadcast, Observer {
 
     @Override
     public void broadcast(Message message) {
-        forward.add(new Forward(this.self.getId(), message));
+        AckMessage am = new AckMessage(message.getSenderId(), message.getSeqNbr());
+        forward.add(new Forward(message.getSenderId(), am));
         beb.broadcast(message);
     }
 
@@ -55,7 +56,7 @@ public class UniformReliableBroadcast implements Broadcast, Observer {
         }
 
         // We check if we already forwarded the message, if not we send it again.
-        Forward fwd = new Forward(message.getForwardId(), message);
+        Forward fwd = new Forward(message.getSenderId(), am);
         if (!forward.contains(fwd)){
             forward.add(fwd);
             beb.broadcast(message);
@@ -98,9 +99,9 @@ class AckMessage {
 class Forward {
 
     public int sender;
-    public Message message;
+    public AckMessage message;
 
-    public Forward(int sender, Message message){
+    public Forward(int sender, AckMessage message){
         this.sender = sender;
         this.message = message;
     }
