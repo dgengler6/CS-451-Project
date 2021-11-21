@@ -70,7 +70,7 @@ public class StubbornLinks implements Links, Observer{
 
     @Override
     public void handleAck(Ack ack){
-        //ack.printMessage();
+        ack.printMessage();
         sent.remove(ack.getMessage());
     }
 
