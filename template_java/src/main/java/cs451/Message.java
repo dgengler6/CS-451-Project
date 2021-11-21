@@ -112,17 +112,17 @@ public class Message implements Serializable {
     }
 
     public Message updateDestInfos(int destId, String destIp, int destPort){
-        this.destId = destId;
+        /*this.destId = destId;
         this.destIp = destIp;
-        this.destPort = destPort;
-        return new Message(this.seqNbr, this.senderId, this.senderIp, this.senderPort, this.destId, this.destIp, this.destPort, this.forwardId, this.forwardIp, this.forwardPort, this.content);
+        this.destPort = destPort;*/
+        return new Message(this.seqNbr, this.senderId, this.senderIp, this.senderPort, destId, destIp, destPort, this.forwardId, this.forwardIp, this.forwardPort, this.content);
     }
 
     public Message updateForwardInfos(int forwardId, String forwardIp, int forwardPort){
-        this.forwardId = forwardId;
+        /*this.forwardId = forwardId;
         this.forwardIp = forwardIp;
-        this.forwardPort = forwardPort;
-        return new Message(this.seqNbr, this.senderId, this.senderIp, this.senderPort, this.destId, this.destIp, this.destPort, this.forwardId, this.forwardIp, this.forwardPort, this.content);
+        this.forwardPort = forwardPort;*/
+        return new Message(this.seqNbr, this.senderId, this.senderIp, this.senderPort, this.destId, this.destIp, this.destPort, forwardId, forwardIp, forwardPort, this.content);
     }
 
     public void printMessage(){
