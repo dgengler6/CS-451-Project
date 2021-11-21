@@ -91,7 +91,7 @@ public class Main {
         UniformReliableBroadcast urb = new UniformReliableBroadcast(hosts, me, null);
 
         for(int i=1; i<=nbMessages;i++){
-            Message m = new Message(i, myID, me.getIp(), me.getPort(), "");
+            Message m = new Message(i, i, myID, me.getIp(), me.getPort(), "");
             urb.broadcast(m);
         }
 

@@ -30,7 +30,7 @@ public class UniformReliableBroadcast implements Broadcast, Observer {
         if(observer == null && message.getSenderId() == self.getId()){
             OutputWriter.writeBroadcast(message, true);
         }
-        AckMessage am = new AckMessage(message.getSenderId(), message.getSeqNbr());
+        AckMessage am = new AckMessage(message.getSenderId(), message.getOrder());
         forward.add(new Forward(message.getSenderId(), am));
         beb.broadcast(message);
     }
@@ -39,7 +39,7 @@ public class UniformReliableBroadcast implements Broadcast, Observer {
     public void deliver(Message message) {
 
         // We add the ack for message msg and for the person that forwarded it.
-        AckMessage am = new AckMessage(message.getSenderId(), message.getSeqNbr());
+        AckMessage am = new AckMessage(message.getSenderId(), message.getOrder());
         am.printAck();
         Set<Integer> ack_for_message = ackMessage.get(am);
         if(ack_for_message != null){
@@ -68,7 +68,7 @@ public class UniformReliableBroadcast implements Broadcast, Observer {
 
 
     private boolean canDeliver(Message message){
-        Set<Integer> acks = ackMessage.get(new AckMessage( message.getSenderId(), message.getSeqNbr()));
+        Set<Integer> acks = ackMessage.get(new AckMessage( message.getSenderId(), message.getOrder()));
         return acks != null && acks.size() > (correct.size() / 2);
     }
 }
