@@ -47,7 +47,6 @@ public class StubbornLinks implements Links, Observer{
         System.out.println(String.format("Periodic Resend of %d messages", sent.size()));
         for(int i=0;i<sent.size();i++){
             Message resend = sent.get(i);
-            //resend.printMessage();
             fll.send(resend);
         }
     }
@@ -61,6 +60,10 @@ public class StubbornLinks implements Links, Observer{
             observer.deliver(message);
         }
         fll.send(new Ack(message));
+        if(message.getForwardId() != message.getSenderId()){
+            fll.send(new Ack(message.updateDestInfos(message.getForwardId(), message.getForwardIp(), message.getForwardPort())));
+        }
+
     }
 
     @Override

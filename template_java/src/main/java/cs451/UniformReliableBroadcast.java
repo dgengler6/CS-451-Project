@@ -27,6 +27,9 @@ public class UniformReliableBroadcast implements Broadcast, Observer {
 
     @Override
     public void broadcast(Message message) {
+        if(observer == null && message.getSenderId() == self.getId()){
+            OutputWriter.writeBroadcast(message, true);
+        }
         AckMessage am = new AckMessage(message.getSenderId(), message.getSeqNbr());
         forward.add(new Forward(message.getSenderId(), am));
         beb.broadcast(message);
