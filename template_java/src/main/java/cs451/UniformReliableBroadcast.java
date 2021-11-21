@@ -94,6 +94,14 @@ class AckMessage {
 
         return this.originalSender == ((AckMessage) obj).originalSender && this.message == ((AckMessage) obj).message;
     }
+
+    @Override
+    public int hashCode()
+    {
+        int result = originalSender;
+        result = 31 * result + message;
+        return result;
+    }
 }
 
 class Forward {
