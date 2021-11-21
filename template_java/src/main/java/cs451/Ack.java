@@ -14,6 +14,6 @@ public class Ack extends Message {
 
     @Override
     public void printMessage(){
-        System.out.println(String.format("recieved ack for msg %d from %d", message.getSeqNbr(), message.getDestId()));
+        System.out.println(String.format("recieved ack for msg %d originally from %d and forwarded by %d", message.getSeqNbr(), message.getDestId(), message.getForwardId()));
     }
 }

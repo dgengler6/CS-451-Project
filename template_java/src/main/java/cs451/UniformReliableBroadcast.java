@@ -64,7 +64,6 @@ public class UniformReliableBroadcast implements Broadcast, Observer {
             forward.add(fwd);
             beb.broadcast(message);
         }
-        System.out.println(forward);
     }
 
 
