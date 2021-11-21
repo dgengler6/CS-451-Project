@@ -60,7 +60,7 @@ public class UniformReliableBroadcast implements Broadcast, Observer {
         }
 
         // We check if we already forwarded the message, if not we send it again.
-        Forward fwd = new Forward(message.getSenderId(), am);
+        Forward fwd = new Forward(message.getForwardId(), am);
         if (!forward.contains(fwd)){
             forward.add(fwd);
             beb.broadcast(message);
