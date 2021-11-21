@@ -31,7 +31,7 @@ public class UniformReliableBroadcast implements Broadcast, Observer {
             OutputWriter.writeBroadcast(message, true);
         }
         AckMessage am = new AckMessage(message.getSenderId(), message.getSeqNbr());
-        forward.add(new Forward(message.getSenderId(), am));
+        forward.add(new Forward(message.getForwardId(), am));
         beb.broadcast(message);
     }
 
@@ -47,7 +47,6 @@ public class UniformReliableBroadcast implements Broadcast, Observer {
         }else{
             ackMessage.put(am, new HashSet<>(Arrays.asList(message.getForwardId())));
         }
-        System.out.println(ack_for_message);
         System.out.println(ackMessage.get(am));
         // If ack[m] > N/2 we deliver the message
         if(!(delivered.contains(message)) && canDeliver(message)){
