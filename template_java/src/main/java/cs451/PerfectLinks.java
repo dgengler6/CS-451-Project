@@ -17,7 +17,7 @@ public class PerfectLinks implements Links, Observer {
 
     @Override
     public void send(Message message){
-        System.out.println(String.format("Sending message %d, on link %s",message.getSeqNbr(),"PL"));
+        //System.out.println(String.format("Sending message %d, on link %s",message.getSeqNbr(),"PL"));
         if(observer == null){
             OutputWriter.writeBroadcast(message, true);
         }
@@ -26,7 +26,7 @@ public class PerfectLinks implements Links, Observer {
 
     @Override
     public void deliver(Message message){
-        System.out.println(String.format("Delivering message %d, on link %s",message.getSeqNbr(),"PL"));
+        //System.out.println(String.format("Delivering message %d, on link %s",message.getSeqNbr(),"PL"));
         if (!delivered.contains(message)){
             if(observer == null){
                 OutputWriter.writeDeliver(message, true);

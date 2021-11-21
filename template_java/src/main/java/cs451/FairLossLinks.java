@@ -22,7 +22,7 @@ public class FairLossLinks implements Links{
 
     @Override
     public void send(Message message){
-        System.out.println(String.format("Sending message %d, on link %s",message.getSeqNbr(),"FLL"));
+        //System.out.println(String.format("Sending message %d, on link %s",message.getSeqNbr(),"FLL"));
         byte[] buf;
         try {
             socket = new DatagramSocket();
@@ -44,7 +44,7 @@ public class FairLossLinks implements Links{
 
     @Override
     public void deliver(Message message){
-        System.out.println(String.format("Delivering message %d, on link %s",message.getSeqNbr(),"FLL"));
+        //System.out.println(String.format("Delivering message %d, on link %s",message.getSeqNbr(),"FLL"));
         if(observer == null){
             OutputWriter.writeDeliver(message, true);
         } else {
