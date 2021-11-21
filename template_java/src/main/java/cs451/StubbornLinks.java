@@ -71,7 +71,9 @@ public class StubbornLinks implements Links, Observer{
     @Override
     public void handleAck(Ack ack){
         ack.printMessage();
-        sent.remove(ack.getMessage());
+        Message am = ack.getMessage();
+        sent.remove(am);
+        sent.removeIf(m -> m.getSenderId() == am.getSenderId() && m.getSeqNbr() == am.getSeqNbr());
     }
 
 
