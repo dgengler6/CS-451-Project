@@ -12,7 +12,7 @@ public class LocalizedCausalBroadcast implements Broadcast, Observer {
     private int[] vectorClock;
     private int delay = 100;
 
-    LocalizedCausalBroadcast(List<Host> hosts, Host self, Observer observer) {
+    LocalizedCausalBroadcast(List<Host> hosts, Host self, Observer observer, int[][] peersConfig) {
         this.self = self;
         this.observer = observer;
 

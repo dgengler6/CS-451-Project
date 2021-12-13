@@ -65,13 +65,6 @@ public class Main {
         int nbMessages = parser.nbMessages();
         int[][] lcbInfos = parser.lcbInfos();
 
-        for(int i = 0; i < lcbInfos.length; i++){
-            System.out.println(String.format("Peer number %s is affected by :", i+1));
-            int[] peers = lcbInfos[i];
-            for(int j = 0; j <peers.length; j++){
-                System.out.println(peers[j]);
-            }
-        }
         OutputWriter.setOutputPath(parser.output());
         MessageListener.setListeningPort(me.getPort());
 
@@ -103,11 +96,12 @@ public class Main {
         }
         */
 
-        //LocalizedCausalBroadcast lcb = new LocalizedCausalBroadcast(hosts, me, null);
+        //
+        LocalizedCausalBroadcast lcb = new LocalizedCausalBroadcast(hosts, me, null, new int[1][1]);
 
         for(int i=1; i<=nbMessages;i++){
             Message m = new Message(i, i, myID, me.getIp(), me.getPort(), hosts.size(), "");
-            //lcb.broadcast(m);
+            lcb.broadcast(m);
         }
 
         //UniformReliableBroadcast urb = new UniformReliableBroadcast(hosts, me, null);
