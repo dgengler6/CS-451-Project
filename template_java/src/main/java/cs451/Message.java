@@ -185,6 +185,16 @@ public class Message implements Serializable {
         System.out.println(String.format("msg %d originally sent by %d to %d. port %d. Forwarded by %d. Content : %s.", seqNbr, senderId, destId, destPort, forwardId, content));
     }
 
+    public void printMesssageVectorClock(){
+        System.out.println(String.format("Vc for message %s sent by %s", this.getSeqNbr(), this.senderId));
+        System.out.print("[ ");
+        for(int vc : vectorClock){
+            System.out.print(vc);
+        }
+        System.out.println(" ]\n");
+
+    }
+
     @Override
     public boolean equals(Object obj) {
         if (obj == this)

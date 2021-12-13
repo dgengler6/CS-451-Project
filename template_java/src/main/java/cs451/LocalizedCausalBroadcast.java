@@ -58,7 +58,7 @@ public class LocalizedCausalBroadcast implements Broadcast, Observer {
     @Override
     public void deliver(Message message) {
         int sender = message.getSenderId();
-
+        message.printMesssageVectorClock();
         if (sender != self.getId()) {
             pending.add(message);
         }
