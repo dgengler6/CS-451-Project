@@ -49,6 +49,7 @@ public class ConfigParser {
                     continue;
                 }else{
                     splits = line.split(SPACES_REGEX);
+                    System.out.println(splits);
                     int[] lineInt = new int[splits.length];
                     for(int i = 0; i < splits.length; i++){
                         lineInt[i] = Integer.parseInt(splits[i]);
