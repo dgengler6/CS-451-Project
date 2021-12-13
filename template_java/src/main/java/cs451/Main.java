@@ -63,9 +63,19 @@ public class Main {
         List<Host> hosts = parser.hosts();
         Host me = hosts.get(myID - 1);
         int nbMessages = parser.nbMessages();
+        int[][] lcbInfos = parser.lcbInfos();
 
+        for(int i = 0; i < lcbInfos.length; i++){
+            System.out.println(String.format("Peer number %s is affected by :", i+1));
+            int[] peers = lcbInfos[i];
+            for(int j = 0; j <peers.length; j++){
+                System.out.println(peers[j]);
+            }
+        }
         OutputWriter.setOutputPath(parser.output());
         MessageListener.setListeningPort(me.getPort());
+
+        System.out.println("Broadcasting and delivering messages...\n");
 
         /* Perfect link implementation
 
@@ -84,15 +94,20 @@ public class Main {
         }
         */
 
-
-        System.out.println("Broadcasting and delivering messages...\n");
-
-
+        /* FIFO implementation
         FifoBroadcast fifo = new FifoBroadcast(hosts, me, null);
 
         for(int i=1; i<=nbMessages;i++){
-            Message m = new Message(i, i, myID, me.getIp(), me.getPort(), "");
+            Message m = new Message(i, i, myID, me.getIp(), me.getPort(), hosts.size(), "");
             fifo.broadcast(m);
+        }
+        */
+
+        //LocalizedCausalBroadcast lcb = new LocalizedCausalBroadcast(hosts, me, null);
+
+        for(int i=1; i<=nbMessages;i++){
+            Message m = new Message(i, i, myID, me.getIp(), me.getPort(), hosts.size(), "");
+            //lcb.broadcast(m);
         }
 
         //UniformReliableBroadcast urb = new UniformReliableBroadcast(hosts, me, null);

@@ -74,4 +74,6 @@ public class Parser {
 
     public int perfectLinkHostId() { return configParser.getPerfectLinkHostId(); }
 
+    public int[][] lcbInfos(){ return configParser.getLocalizedCausalBroadcastProcesses(); }
+
 }

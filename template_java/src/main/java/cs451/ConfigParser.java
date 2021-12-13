@@ -14,7 +14,6 @@ public class ConfigParser {
 
     private int nbMessages = 0;
     private int perfectLinkHostId = 0;
-    // We'll use that latter, might as well add it now
     private int[][] localizedCausalBroadcastProcesses;
 
     public boolean populate(String value) {
@@ -45,12 +44,17 @@ public class ConfigParser {
 
             // If the file has more lines we handle it, only used for lcausal config.
             for(String line; (line = br.readLine()) != null; lineNum++) {
-                System.out.println("Lcausal Config");
+                System.out.println("Localized Causal Config");
                 if (line.isBlank()) {
                     continue;
+                }else{
+                    splits = line.split(SPACES_REGEX);
+                    int[] lineInt = new int[splits.length];
+                    for(int i = 0; i < splits.length; i++){
+                        lineInt[i] = Integer.parseInt(splits[i]);
+                    }
+                    localizedCausalBroadcastProcesses[lineInt[0] - 1] = lineInt;
                 }
-
-                splits = line.split(SPACES_REGEX);
             }
         } catch (IOException e) {
             System.err.println("Problem with the config file!");
@@ -68,4 +72,5 @@ public class ConfigParser {
 
     public int getPerfectLinkHostId() { return perfectLinkHostId; }
 
+    public int[][] getLocalizedCausalBroadcastProcesses() { return localizedCausalBroadcastProcesses; }
 }
