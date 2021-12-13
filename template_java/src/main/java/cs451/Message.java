@@ -131,6 +131,10 @@ public class Message implements Serializable {
         return forwardPort;
     }
 
+    public int getVectorClockSize() {
+        return vectorClockSize;
+    }
+
     public int[] getVectorClock() {
         return vectorClock;
     }
