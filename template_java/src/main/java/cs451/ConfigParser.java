@@ -19,8 +19,18 @@ public class ConfigParser {
     public boolean populate(String value) {
         File file = new File(value);
         path = file.getPath();
+        int nbLines = 0;
 
-        try(BufferedReader br = new BufferedReader(new FileReader(path))) {
+        // Count Line number
+        try (BufferedReader reader = new BufferedReader(new FileReader(path))) {
+            while (reader.readLine() != null) nbLines++;
+        } catch (IOException e) {
+            System.err.println("Problem with the config file!");
+            return false;
+        }
+
+        // Do Initialization.
+        try (BufferedReader br = new BufferedReader(new FileReader(path))) {
             int lineNum = 1;
             String firstLine = br.readLine();
 
@@ -29,32 +39,34 @@ public class ConfigParser {
             String[] splits = firstLine.split(SPACES_REGEX);
 
             if (splits.length == 1) {
-                System.out.println("FIFO Config");
+                if (nbLines == 1)
+                    System.out.println("FIFO Config");
                 nbMessages = Integer.parseInt(splits[0]);
-            }else if (splits.length == 2) {
+            } else if (splits.length == 2) {
                 System.out.println("Perfect Links Config");
                 nbMessages = Integer.parseInt(splits[0]);
                 perfectLinkHostId = Integer.parseInt(splits[1]);
-            }else{
+            } else {
                 System.err.println("Problem with the line " + lineNum + " in the config file!");
                 return false;
             }
 
-            lineNum += 1;
-
-            // If the file has more lines we handle it, only used for lcausal config.
-            for(String line; (line = br.readLine()) != null; lineNum++) {
+            if (nbLines > 1) {
                 System.out.println("Localized Causal Config");
-                if (line.isBlank()) {
-                    continue;
-                }else{
-                    splits = line.split(SPACES_REGEX);
-                    int[] lineInt = new int[splits.length];
-                    for(int i = 0; i < splits.length; i++){
-                        lineInt[i] = Integer.parseInt(splits[i]);
-                        System.out.println(lineInt[i]);
+                localizedCausalBroadcastProcesses = new int[nbLines - 1][];
+                for (String line; (line = br.readLine()) != null; lineNum++) {
+
+                    if (line.isBlank()) {
+                        continue;
+                    } else {
+                        splits = line.split(SPACES_REGEX);
+                        int[] lineInt = new int[splits.length];
+                        for (int i = 0; i < splits.length; i++) {
+                            lineInt[i] = Integer.parseInt(splits[i]);
+                            System.out.println(lineInt[i]);
+                        }
+                        localizedCausalBroadcastProcesses[lineInt[0] - 1] = lineInt;
                     }
-                    localizedCausalBroadcastProcesses[lineInt[0] - 1] = lineInt;
                 }
             }
         } catch (IOException e) {
@@ -69,9 +81,15 @@ public class ConfigParser {
         return path;
     }
 
-    public int getNbMessages() { return nbMessages; }
+    public int getNbMessages() {
+        return nbMessages;
+    }
 
-    public int getPerfectLinkHostId() { return perfectLinkHostId; }
+    public int getPerfectLinkHostId() {
+        return perfectLinkHostId;
+    }
 
-    public int[][] getLocalizedCausalBroadcastProcesses() { return localizedCausalBroadcastProcesses; }
+    public int[][] getLocalizedCausalBroadcastProcesses() {
+        return localizedCausalBroadcastProcesses;
+    }
 }
