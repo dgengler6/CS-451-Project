@@ -5,20 +5,26 @@ import java.util.ArrayList;
 
 public class LocalizedCausalBroadcast implements Broadcast, Observer {
 
-    private UniformReliableBroadcast urb;
     private Observer observer;
     private Host self;
+
+    private UniformReliableBroadcast urb;
     private List<Message> pending;
     private List<Message> tmpPending;
+    private int broadcastVectorClockValue;
     private int[] vectorClock;
+    private int[][] peersCausalLink;
+
     private int delay = 100;
 
-    LocalizedCausalBroadcast(List<Host> hosts, Host self, Observer observer, int[][] peersConfig) {
+    LocalizedCausalBroadcast(List<Host> hosts, Host self, Observer observer, int[][] peersCausalLink) {
         this.self = self;
         this.observer = observer;
 
         //Initialize the vector clock for all other hosts.
+        this.broadcastVectorClockValue = 0;
         this.vectorClock = new int[hosts.size()];
+        this.peersCausalLink = peersCausalLink;
 
         this.pending = new ArrayList<>();
         this.tmpPending = new ArrayList<>();
@@ -45,7 +51,13 @@ public class LocalizedCausalBroadcast implements Broadcast, Observer {
     @Override
     public void broadcast(Message message) {
         // Set message's vector clock.
-        message.setVectorClock(this.vectorClock);
+        // When broadcasting we keep a temporary vector clock, so we keep message indices but are
+        // still blank on recieving.
+        int[] tmpVectorClock = vectorClock.clone();
+        tmpVectorClock[self.getId() - 1] = broadcastVectorClockValue;
+        broadcastVectorClockValue += 1;
+
+        message.setVectorClock(tmpVectorClock);
 
         // Broadcast message
         if (observer == null && message.getSenderId() == self.getId()) {
@@ -53,8 +65,6 @@ public class LocalizedCausalBroadcast implements Broadcast, Observer {
         }
         urb.broadcast(message);
 
-        // Update self VC
-        vectorClock[self.getId() - 1] += 1;
     }
 
     @Override
@@ -71,7 +81,6 @@ public class LocalizedCausalBroadcast implements Broadcast, Observer {
      */
     public void deliverPending() {
         List<Message> delivered = new ArrayList<>();
-
         // Add all messages from tmpPending then clear the array.
         pending.addAll(tmpPending);
         tmpPending.clear();
@@ -79,7 +88,7 @@ public class LocalizedCausalBroadcast implements Broadcast, Observer {
         // Check if pending messages are deliverable and delivers them if so.
         for (Message message : pending) {
             int[] messageVectorClock = message.getVectorClock();
-            if (checkVectorClockDeliverable(messageVectorClock)) {
+            if (checkVectorClockDeliverable(message.getSenderId(), messageVectorClock)) {
                 // Deliver the message
                 if (observer == null) {
                     OutputWriter.writeDeliver(message, true);
@@ -107,10 +116,14 @@ public class LocalizedCausalBroadcast implements Broadcast, Observer {
      * @param messageVectorClock the other message's VC
      * @return true if the message is deliverable.
      */
-    public boolean checkVectorClockDeliverable(int[] messageVectorClock) {
-        //TODO: add the filter on the clients that are causaly dependent.
-        for (int i = 0; i < messageVectorClock.length; i++) {
-            if (this.vectorClock[i] < messageVectorClock[i]) {
+    public boolean checkVectorClockDeliverable(int peerId, int[] messageVectorClock) {
+        // We get the list of indices that impact a given process.
+        int[] peersCausallyImpactingMessage = peersCausalLink[peerId - 1];
+
+        for (int i = 0; i < peersCausallyImpactingMessage.length; i++) {
+            // Then we do the check for all of these indices ( and not all processes as before )
+            int vcIndex = peersCausallyImpactingMessage[i] - 1;
+            if (this.vectorClock[vcIndex] < messageVectorClock[vcIndex]) {
                 return false;
             }
         }
