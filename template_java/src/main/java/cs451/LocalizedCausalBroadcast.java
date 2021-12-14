@@ -9,6 +9,7 @@ public class LocalizedCausalBroadcast implements Broadcast, Observer {
     private Observer observer;
     private Host self;
     private List<Message> pending;
+    private List<Message> tmpPending;
     private int[] vectorClock;
     private int delay = 100;
 
@@ -20,6 +21,7 @@ public class LocalizedCausalBroadcast implements Broadcast, Observer {
         this.vectorClock = new int[hosts.size()];
 
         this.pending = new ArrayList<>();
+        this.tmpPending = new ArrayList<>();
 
         this.urb = new UniformReliableBroadcast(hosts, self, this);
 
@@ -60,7 +62,7 @@ public class LocalizedCausalBroadcast implements Broadcast, Observer {
         int sender = message.getSenderId();
         message.printMesssageVectorClock();
         if (sender != self.getId()) {
-            pending.add(message);
+            tmpPending.add(message);
         }
 
     }
@@ -90,6 +92,11 @@ public class LocalizedCausalBroadcast implements Broadcast, Observer {
         // Remove all delivered messages from the list of pending messages.
         for (Message message : delivered) {
             pending.remove(message);
+        }
+
+        for (Message message : tmpPending) {
+            pending.add(message);
+            tmpPending.remove(message);
         }
 
     }
