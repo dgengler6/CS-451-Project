@@ -63,7 +63,13 @@ public class LocalizedCausalBroadcast implements Broadcast, Observer {
         if (observer == null && message.getSenderId() == self.getId()) {
             OutputWriter.writeBroadcast(message, true);
         }
-        urb.broadcast(message);
+        try {
+            Thread.sleep(2000);
+            urb.broadcast(message);
+        } catch (InterruptedException e) {
+            System.out.println("Thread error in Stubborn link timer " + e);
+        }
+        //urb.broadcast(message);
 
     }
 
