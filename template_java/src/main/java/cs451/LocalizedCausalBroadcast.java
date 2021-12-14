@@ -120,8 +120,8 @@ public class LocalizedCausalBroadcast implements Broadcast, Observer {
         System.out.println("VC for self ");
         System.out.print("[ ");
         for(int vc : vectorClock){
-            System.out.print(vc);
+            System.out.print(vc + " ");
         }
-        System.out.println(" ]\n");
+        System.out.println("]\n");
     }
 }

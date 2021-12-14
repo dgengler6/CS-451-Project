@@ -189,9 +189,9 @@ public class Message implements Serializable {
         System.out.println(String.format("Vc for message %s sent by %s", this.getSeqNbr(), this.senderId));
         System.out.print("[ ");
         for(int vc : vectorClock){
-            System.out.print(vc);
+            System.out.print(vc + " ");
         }
-        System.out.println(" ]\n");
+        System.out.println("]\n");
 
     }
 
