@@ -88,8 +88,9 @@ public class LocalizedCausalBroadcast implements Broadcast, Observer {
                 }
                 delivered.add(message);
 
-                // Update vector clock.
-                vectorClock[message.getSenderId() - 1] += 1;
+                // Update vector clock, but only when delivering messages from other clients.
+                if (message.getSenderId() != self.getId())
+                    vectorClock[message.getSenderId() - 1] += 1;
             }
         }
 
@@ -116,10 +117,10 @@ public class LocalizedCausalBroadcast implements Broadcast, Observer {
         return true;
     }
 
-    public void printVectorClock(){
+    public void printVectorClock() {
         System.out.println("VC for self ");
         System.out.print("[ ");
-        for(int vc : vectorClock){
+        for (int vc : vectorClock) {
             System.out.print(vc + " ");
         }
         System.out.println("]\n");
