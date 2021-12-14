@@ -65,6 +65,14 @@ public class Main {
         int nbMessages = parser.nbMessages();
         int[][] lcbInfos = parser.lcbInfos();
 
+        System.out.println("Dependencies");
+        for (int i = 0; i < lcbInfos.length; i++) {
+            System.out.print(String.format("For user %s : ", i + 1));
+            for (int j = 0; j < lcbInfos[i].length; j++) {
+                System.out.print(String.format("%s, ", j + 1));
+            }
+            System.out.print("\n");
+        }
         OutputWriter.setOutputPath(parser.output());
         MessageListener.setListeningPort(me.getPort());
 

@@ -98,8 +98,7 @@ public class LocalizedCausalBroadcast implements Broadcast, Observer {
                 delivered.add(message);
 
                 // Update vector clock, but only when delivering messages from other clients.
-                if (message.getSenderId() != self.getId())
-                    vectorClock[message.getSenderId() - 1] += 1;
+                vectorClock[message.getSenderId() - 1] += 1;
             }
         }
 
