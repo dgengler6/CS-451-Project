@@ -59,11 +59,10 @@ public class LocalizedCausalBroadcast implements Broadcast, Observer {
 
     @Override
     public void deliver(Message message) {
-        int sender = message.getSenderId();
         message.printMesssageVectorClock();
-        if (sender != self.getId()) {
-            tmpPending.add(message);
-        }
+        printVectorClock();
+        // Here we add messages to a temporary array in order to avoid conflicts in deliverPending Thread.
+        tmpPending.add(message);
 
     }
 
@@ -72,6 +71,11 @@ public class LocalizedCausalBroadcast implements Broadcast, Observer {
      */
     public void deliverPending() {
         List<Message> delivered = new ArrayList<>();
+
+        // Add all messages from tmpPending then clear the array.
+        pending.addAll(tmpPending);
+        tmpPending.clear();
+
         // Check if pending messages are deliverable and delivers them if so.
         for (Message message : pending) {
             int[] messageVectorClock = message.getVectorClock();
@@ -93,12 +97,6 @@ public class LocalizedCausalBroadcast implements Broadcast, Observer {
         for (Message message : delivered) {
             pending.remove(message);
         }
-
-        for (Message message : tmpPending) {
-            pending.add(message);
-        }
-        tmpPending.clear();
-
     }
 
     /**
@@ -116,5 +114,14 @@ public class LocalizedCausalBroadcast implements Broadcast, Observer {
             }
         }
         return true;
+    }
+
+    public void printVectorClock(){
+        System.out.println("VC for self ");
+        System.out.print("[ ");
+        for(int vc : vectorClock){
+            System.out.print(vc);
+        }
+        System.out.println(" ]\n");
     }
 }
