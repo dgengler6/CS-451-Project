@@ -91,8 +91,8 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/../template_java/src/main/java/cs451/LocalizedCausalBroadcast.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="912">
-                  <caret line="98" column="39" selection-start-line="98" selection-start-column="39" selection-end-line="98" selection-end-column="39" />
+                <state relative-caret-position="835">
+                  <caret line="99" column="21" selection-start-line="99" selection-start-column="21" selection-end-line="99" selection-end-column="21" />
                   <folding>
                     <element signature="imports" expanded="true" />
                   </folding>
@@ -335,7 +335,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1280" y="-312" width="1920" height="1080" extended-state="0" />
+    <frame x="1280" y="-312" width="1920" height="1080" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.106496274" />
@@ -597,8 +597,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/../template_java/src/main/java/cs451/LocalizedCausalBroadcast.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="912">
-          <caret line="98" column="39" selection-start-line="98" selection-start-column="39" selection-end-line="98" selection-end-column="39" />
+        <state relative-caret-position="835">
+          <caret line="99" column="21" selection-start-line="99" selection-start-column="21" selection-end-line="99" selection-end-column="21" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

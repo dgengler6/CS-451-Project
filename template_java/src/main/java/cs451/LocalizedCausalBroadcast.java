@@ -96,8 +96,8 @@ public class LocalizedCausalBroadcast implements Broadcast, Observer {
 
         for (Message message : tmpPending) {
             pending.add(message);
-            tmpPending.remove(message);
         }
+        tmpPending.clear();
 
     }
 
