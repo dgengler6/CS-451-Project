@@ -69,8 +69,6 @@ public class LocalizedCausalBroadcast implements Broadcast, Observer {
 
     @Override
     public void deliver(Message message) {
-        message.printMesssageVectorClock();
-        printVectorClock();
         // Here we add messages to a temporary array in order to avoid conflicts in deliverPending Thread.
         tmpPending.add(message);
 
@@ -88,7 +86,7 @@ public class LocalizedCausalBroadcast implements Broadcast, Observer {
         // Check if pending messages are deliverable and delivers them if so.
         for (Message message : pending) {
             int[] messageVectorClock = message.getVectorClock();
-            if (checkVectorClockDeliverable(message.getSenderId(), messageVectorClock)) {
+            if (checkVectorClockDeliverable(message.getSenderId(), messageVectorClock, message)) {
                 // Deliver the message
                 if (observer == null) {
                     OutputWriter.writeDeliver(message, true);
@@ -115,7 +113,7 @@ public class LocalizedCausalBroadcast implements Broadcast, Observer {
      * @param messageVectorClock the other message's VC
      * @return true if the message is deliverable.
      */
-    public boolean checkVectorClockDeliverable(int peerId, int[] messageVectorClock) {
+    public boolean checkVectorClockDeliverable(int peerId, int[] messageVectorClock, Message message) {
         // We get the list of indices that impact a given process.
         int[] peersCausallyImpactingMessage = peersCausalLink[peerId - 1];
 
@@ -126,6 +124,10 @@ public class LocalizedCausalBroadcast implements Broadcast, Observer {
                 return false;
             }
         }
+        System.out.println("Able to deliver message bc (self, other)");
+        printVectorClock();
+        message.printMesssageVectorClock();
+
         return true;
     }
 
