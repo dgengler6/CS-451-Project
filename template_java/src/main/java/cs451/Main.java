@@ -97,7 +97,7 @@ public class Main {
         */
 
         //
-        LocalizedCausalBroadcast lcb = new LocalizedCausalBroadcast(hosts, me, null, new int[1][1]);
+        LocalizedCausalBroadcast lcb = new LocalizedCausalBroadcast(hosts, me, null, lcbInfos);
 
         for(int i=1; i<=nbMessages;i++){
             Message m = new Message(i, i, myID, me.getIp(), me.getPort(), hosts.size(), "");
