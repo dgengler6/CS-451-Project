@@ -15,7 +15,7 @@ public class LocalizedCausalBroadcast implements Broadcast, Observer {
     private int[] vectorClock;
     private int[][] peersCausalLink;
 
-    private int delay = 3000;
+    private int delay = 100;
 
     LocalizedCausalBroadcast(List<Host> hosts, Host self, Observer observer, int[][] peersCausalLink) {
         this.self = self;
@@ -127,15 +127,9 @@ public class LocalizedCausalBroadcast implements Broadcast, Observer {
             // Then we do the check for all of these indices ( and not all processes as before )
             int vcIndex = peersCausallyImpactingMessage[i] - 1;
             if (this.vectorClock[vcIndex] < messageVectorClock[vcIndex]) {
-                System.out.println("Unable to deliver message bc (self, other)");
-                printVectorClock();
-                message.printMesssageVectorClock();
                 return false;
             }
         }
-        System.out.println("Able to deliver message bc (self, other)");
-        printVectorClock();
-        message.printMesssageVectorClock();
         return true;
     }
 
