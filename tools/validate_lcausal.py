@@ -103,7 +103,7 @@ if __name__ == "__main__":
 
     for proc, o in enumerate(results.output):
         print("Checking {}".format(o))
-        if !checkProcess(proc + 1, o, results.output):
+        if not checkProcess(proc + 1, o, results.output):
             print("Validation failed!")
         else:
             print("Validation OK")
