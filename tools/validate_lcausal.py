@@ -47,7 +47,7 @@ def checkProcess(proc, impactingProcessesForProc, filePath, files):
 
 def verifyBroadcast(proc, broadcast, last_deliver_of_each, files):
 
-    print(f"Broadcast of message {broadcast} by process {proc} depends on {last_deliver_of_each}")
+    #print(f"Broadcast of message {broadcast} by process {proc} depends on {last_deliver_of_each}")
         
     if not last_deliver_of_each:
         return True
@@ -68,7 +68,8 @@ def verifyBroadcast(proc, broadcast, last_deliver_of_each, files):
                             nb_found += 1
 
                     if sender == proc and msg == broadcast:
-                        return nb_found == len(last_deliver_of_each)
+                        if nb_found != len(last_deliver_of_each):
+                            return False
                     
 
     return True
