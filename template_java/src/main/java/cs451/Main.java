@@ -107,6 +107,13 @@ public class Main {
         //
         LocalizedCausalBroadcast lcb = new LocalizedCausalBroadcast(hosts, me, null, lcbInfos);
 
+        if(myID % 2 == 0 ){
+            try {
+                Thread.sleep(myID * 1000);
+            }catch (InterruptedException e){
+                
+            }
+        }
         for(int i=1; i<=nbMessages;i++){
             Message m = new Message(i, i, myID, me.getIp(), me.getPort(), hosts.size(), "");
             lcb.broadcast(m);
