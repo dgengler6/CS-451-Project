@@ -53,6 +53,7 @@ def verifyBroadcast(proc, broadcast, last_deliver_of_each, files):
         return True
 
     for filePath in files:
+        print("Checking {}".format(filePath))
         nb_found = 0 
         with open(filePath) as f:
             for lineNumber, line in enumerate(f):
