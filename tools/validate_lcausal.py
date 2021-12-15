@@ -32,7 +32,7 @@ def checkProcess(proc, impactingProcessesForProc, filePath, files):
             # Check broadcast
             if tokens[0] == 'b':
                 msg = int(tokens[1])
-                if(!verifyBroadcast(proc, msg, last_deliver_of_each, files)):
+                if(not verifyBroadcast(proc, msg, last_deliver_of_each, files)):
                     return False
                 
 
