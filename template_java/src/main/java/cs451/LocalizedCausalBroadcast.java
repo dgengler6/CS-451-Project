@@ -35,15 +35,11 @@ public class LocalizedCausalBroadcast implements Broadcast, Observer {
         Thread deliverPendingThread = new Thread() {
             public void run() {
                 while (true) {
-                    /*try {
+                    try {
                         deliverPending();
                         Thread.sleep(delay);
                     } catch (InterruptedException e) {
                         System.out.println("Thread error in Stubborn link timer " + e);
-                    }*/
-                    System.out.println(!tmpPending.isEmpty() + " " + !pending.isEmpty());
-                    if(!tmpPending.isEmpty() || !pending.isEmpty()){
-                        deliverPending();
                     }
                 }
             }
