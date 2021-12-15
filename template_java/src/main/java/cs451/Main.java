@@ -111,7 +111,7 @@ public class Main {
             try {
                 Thread.sleep(myID * 1000);
             }catch (InterruptedException e){
-                
+
             }
         }
         for(int i=1; i<=nbMessages;i++){
