@@ -35,11 +35,14 @@ public class LocalizedCausalBroadcast implements Broadcast, Observer {
         Thread deliverPendingThread = new Thread() {
             public void run() {
                 while (true) {
-                    try {
+                    /*try {
                         deliverPending();
                         Thread.sleep(delay);
                     } catch (InterruptedException e) {
                         System.out.println("Thread error in Stubborn link timer " + e);
+                    }*/
+                    if(!tmpPending.isEmpty()){
+                        deliverPending();
                     }
                 }
             }
@@ -122,18 +125,20 @@ public class LocalizedCausalBroadcast implements Broadcast, Observer {
     public boolean checkVectorClockDeliverable(int peerId, int[] messageVectorClock, Message message) {
         // We get the list of indices that impact a given process.
         int[] peersCausallyImpactingMessage = peersCausalLink[peerId - 1];
-        System.out.println("Able to deliver message bc (self, other)");
-        printVectorClock();
-        message.printMesssageVectorClock();
+
         for (int i = 0; i < peersCausallyImpactingMessage.length; i++) {
             // Then we do the check for all of these indices ( and not all processes as before )
             int vcIndex = peersCausallyImpactingMessage[i] - 1;
             if (this.vectorClock[vcIndex] < messageVectorClock[vcIndex]) {
+                System.out.println("Unable to deliver message bc (self, other)");
+                printVectorClock();
+                message.printMesssageVectorClock();
                 return false;
             }
         }
-
-
+        System.out.println("Able to deliver message bc (self, other)");
+        printVectorClock();
+        message.printMesssageVectorClock();
         return true;
     }
 
