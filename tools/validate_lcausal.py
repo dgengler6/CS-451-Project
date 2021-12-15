@@ -102,8 +102,9 @@ if __name__ == "__main__":
         print(dict_impacting_processes)
 
     for proc, o in enumerate(results.output):
+        print(proc)
         print("Checking {}".format(o))
-        if not checkProcess(proc + 1, o, results.output):
+        if not checkProcess(proc + 1, dict_impacting_processes[proc], o, results.output):
             print("Validation failed!")
         else:
             print("Validation OK")
