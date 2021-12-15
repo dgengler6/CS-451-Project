@@ -96,7 +96,7 @@ if __name__ == "__main__":
         for lineNumber, line in enumerate(f):
             tokens = line.split()
 
-            if lineNumber > 1:
+            if lineNumber > 0:
                 dict_impacting_processes[str(tokens[0])] = tokens
 
         print(dict_impacting_processes)
