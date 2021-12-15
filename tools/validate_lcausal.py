@@ -23,7 +23,6 @@ def checkProcess(proc, impactingProcessesForProc, filePath, files):
     i = 1
     nextMessage = defaultdict(lambda : 1)
     filename = os.path.basename(filePath)
-    print(files)
     last_deliver_of_each = {}
     with open(filePath) as f:
         for lineNumber, line in enumerate(f):
