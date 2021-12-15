@@ -47,11 +47,12 @@ def checkProcess(proc, impactingProcessesForProc, filePath, files):
 
 def verifyBroadcast(proc, broadcast, last_deliver_of_each, files):
 
+    print(f"Broadcast of message {broadcast} by process {proc} depends on {last_deliver_of_each}")
+        
     if not last_deliver_of_each:
         return True
 
     for filePath in files:
-        print(last_deliver_of_each)
         nb_found = 0 
         with open(filePath) as f:
             for lineNumber, line in enumerate(f):
