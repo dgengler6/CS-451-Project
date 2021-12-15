@@ -97,7 +97,7 @@ if __name__ == "__main__":
             tokens = line.split()
 
             if lineNumber > 0:
-                dict_impacting_processes[tokens[0]] = list(map(lambda x: int(x), tokens))
+                dict_impacting_processes[int(tokens[0])] = list(map(lambda x: int(x), tokens))
 
         print(dict_impacting_processes)
 
