@@ -67,7 +67,7 @@
             <entry file="file://$PROJECT_DIR$/../template_java/src/main/java/cs451/LocalizedCausalBroadcast.java">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="595">
-                  <caret line="43" column="66" selection-start-line="43" selection-start-column="66" selection-end-line="43" selection-end-column="66" />
+                  <caret line="43" column="47" selection-start-line="43" selection-start-column="47" selection-end-line="43" selection-end-column="47" />
                   <folding>
                     <element signature="imports" expanded="true" />
                     <element signature="e#1092#1493#0" expanded="true" />
@@ -571,7 +571,7 @@
     <entry file="file://$PROJECT_DIR$/../template_java/src/main/java/cs451/LocalizedCausalBroadcast.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="595">
-          <caret line="43" column="66" selection-start-line="43" selection-start-column="66" selection-end-line="43" selection-end-column="66" />
+          <caret line="43" column="47" selection-start-line="43" selection-start-column="47" selection-end-line="43" selection-end-column="47" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#1092#1493#0" expanded="true" />
