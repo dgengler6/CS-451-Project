@@ -44,7 +44,7 @@ public class StubbornLinks implements Links, Observer {
     }
 
     public void stubbornSend() {
-        //System.out.println(String.format("Periodic Resend of %d messages", sent.size()));
+        System.out.println(String.format("Periodic Resend of %d messages", sent.size()));
         for (int i = 0; i < sent.size(); i++) {
             Message resend = sent.get(i);
             //resend.printMessage();
